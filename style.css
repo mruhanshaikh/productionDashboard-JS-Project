@@ -60,12 +60,10 @@ main .showcase {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border: 2px solid red;
   flex-wrap: wrap;
 }
 main .showcase .box {
   flex: 1 1 270px;
-  border: 2px solid red;
   position: relative;
   display: flex;
   flex-direction: column;

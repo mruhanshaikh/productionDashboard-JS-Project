@@ -29,11 +29,9 @@ main{
         @include flex(row,center,center);
         gap:1rem;
         padding:1rem;
-        border:2px solid red;
         flex-wrap:wrap;
         .box{
         flex:1 1 270px;
-        border:2px solid red;
         position: relative;
         @include flex(column,center,center);
         img{

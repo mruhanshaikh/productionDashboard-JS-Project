@@ -10,19 +10,30 @@ html,body{
     background-color: var(--trinityColor);
     @include flex(row,center,flex-start);
     font-size:clamp(14px,1vw,18px);
+    overflow: hidden;
+}
+::-webkit-scrollbar{
+    display: none;
 }
 main{
     width:100%;
     max-width:3000px;
+    min-height:100svh;
+    height:100dvh;
     background-color: var(--trinityColor2);
-    @include flex(column,center,center);
+    @include flex(column,flex-start,flex-start);
+    flex-wrap:wrap;
+    overflow-y:scroll;
     .showcase{
-        width:80%;
-        @include flex(column,center,center);
-        gap:2rem;
-        padding:1rem;
-        .box{
         width:100%;
+        @include flex(row,center,center);
+        gap:1rem;
+        padding:1rem;
+        border:2px solid red;
+        flex-wrap:wrap;
+        .box{
+        flex:1 1 270px;
+        border:2px solid red;
         position: relative;
         @include flex(column,center,center);
         img{

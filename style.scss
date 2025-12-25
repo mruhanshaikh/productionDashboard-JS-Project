@@ -1,0 +1,48 @@
+@import 'helper';
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+html,body{
+    width:100%;
+    height:100%;
+    background-color: var(--trinityColor);
+    @include flex(row,center,flex-start);
+    font-size:clamp(14px,1vw,18px);
+}
+main{
+    width:100%;
+    max-width:3000px;
+    background-color: var(--trinityColor2);
+    @include flex(column,center,center);
+    .showcase{
+        width:80%;
+        @include flex(column,center,center);
+        gap:2rem;
+        padding:1rem;
+        .box{
+        width:100%;
+        position: relative;
+        @include flex(column,center,center);
+        img{
+            width:100%;
+            aspect-ratio:1/1;
+            object-fit: cover;
+            border-radius:20px;
+            object-position:top;
+        }
+        span{
+            position:absolute;
+            right:0;
+            bottom:0;
+            color:var(--primaryColor);
+            background-color: var(--secondaryColor);
+            padding:0.5rem 1rem;
+            border-radius:5px;
+            font-size:2rem;
+            text-transform:capitalize;
+        }
+    }
+    }
+}

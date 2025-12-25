@@ -28,12 +28,25 @@ main{
         width:100%;
         @include flex(row,center,center);
         gap:1rem;
-        padding:1rem;
+        padding:2rem;
         flex-wrap:wrap;
+        &:has(.box:hover) .box{
+            scale:0.9;
+        }
+         &:has(.box:active) .box{
+            scale:0.9;
+        }
         .box{
-        flex:1 1 270px;
+        flex:1 1 250px;
         position: relative;
         @include flex(column,center,center);
+        transition: all 0.3s linear;
+        &:hover{
+           scale:1.1 !important;
+        }
+        &:active{
+           scale:1.1 !important;
+        }
         img{
             width:100%;
             aspect-ratio:1/1;

@@ -59,16 +59,29 @@ main .showcase {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   flex-wrap: wrap;
 }
+main .showcase:has(.box:hover) .box {
+  scale: 0.9;
+}
+main .showcase:has(.box:active) .box {
+  scale: 0.9;
+}
 main .showcase .box {
-  flex: 1 1 270px;
+  flex: 1 1 250px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s linear;
+}
+main .showcase .box:hover {
+  scale: 1.1 !important;
+}
+main .showcase .box:active {
+  scale: 1.1 !important;
 }
 main .showcase .box img {
   width: 100%;

@@ -15,6 +15,11 @@
   --secondaryColor:#456882;
   --trinityColor:#234C6A;
   --trinityColor2:#1B3C53;
+  --butFontSize:clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+  --labelFontSize:clamp(0.8rem, 0.75rem + 0.25vw, 0.95rem);
+  --subHeadingFontSize:clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  --headingFontSize:clamp(2rem, 1.5rem + 3vw, 3.5rem);
+  --bodyFontSize:clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
 }
 
 * {
@@ -23,7 +28,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   background-color: var(--trinityColor);
@@ -31,8 +37,8 @@ html, body {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  font-size: clamp(14px, 1vw, 18px);
-  overflow: hidden;
+  font-size: var(--bodyFontSize);
+  font-family: regularFont;
 }
 
 ::-webkit-scrollbar {
@@ -42,22 +48,21 @@ html, body {
 main {
   width: 100%;
   max-width: 3000px;
-  min-height: 100svh;
-  height: 100dvh;
   background-color: var(--trinityColor2);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  position: relative;
   flex-wrap: wrap;
-  overflow-y: scroll;
 }
 main .showcase {
   width: 100%;
+  min-height: 100svh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 1rem;
   padding: 2rem;
   flex-wrap: wrap;
@@ -76,6 +81,7 @@ main .showcase .box {
   justify-content: center;
   align-items: center;
   transition: all 0.3s linear;
+  cursor: pointer;
 }
 main .showcase .box:hover {
   scale: 1.1 !important;
@@ -91,6 +97,7 @@ main .showcase .box img {
   border-radius: 20px;
   -o-object-position: top;
      object-position: top;
+  pointer-events: none;
 }
 main .showcase .box span {
   position: absolute;
@@ -100,6 +107,94 @@ main .showcase .box span {
   background-color: var(--secondaryColor);
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: var(--labelFontSize);
   text-transform: capitalize;
+  pointer-events: none;
+}
+main .openBox {
+  width: 100%;
+  min-height: 100svh;
+  padding: 2rem;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--primaryColor);
+}
+main .openBox .top-wrapper {
+  margin-bottom: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+main .openBox .top-wrapper h2 {
+  text-transform: capitalize;
+  pointer-events: none;
+  font-size: 1.5rem;
+  font-family: boldFont;
+  font-size: var(--subHeadingFontSize);
+}
+main .openBox .top-wrapper button {
+  cursor: pointer;
+  text-transform: capitalize;
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  font-size: var(--butFontSize);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+main .openBox .mid-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+}
+main .openBox .mid-wrapper .box {
+  flex: 1;
+  min-height: 70svh;
+  background-color: var(--trinityColor2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+main .openBox .mid-wrapper .box form {
+  width: 100%;
+  min-height: 50svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+main .openBox .mid-wrapper .box form .form-elem {
+  border-radius: 0.5rem;
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+}
+main .openBox .mid-wrapper .box form :nth-child(2) {
+  flex-grow: 4;
+}
+main .openBox .mid-wrapper .box button {
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-size: var(--butFontSize);
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  border: none;
+  cursor: pointer;
+  font-family: boldFont;
+}
+main .openBox .mid-wrapper :nth-child(2) {
+  flex-grow: 2;
 }/*# sourceMappingURL=style.css.map */

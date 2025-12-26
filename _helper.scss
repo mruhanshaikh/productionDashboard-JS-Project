@@ -15,6 +15,11 @@
     --secondaryColor:#456882;
     --trinityColor:#234C6A;
     --trinityColor2:#1B3C53;
+    --butFontSize:clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    --labelFontSize:clamp(0.8rem, 0.75rem + 0.25vw, 0.95rem);
+    --subHeadingFontSize:clamp(1.4rem, 1.2rem + 1vw, 2rem);
+    --headingFontSize:clamp(2rem, 1.5rem + 3vw, 3.5rem);
+    --bodyFontSize:clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);;
 }
 @mixin flex($direction,$justify,$align){
     display: flex;

@@ -1,21 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>produnction Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <main>
-        <section class="showcase">
-            <div class="box"> <img src="assets/todo-img.jpg" alt="todo-img"><span>todo list</span></div>
-            <div class="box"> <img src="assets/dailytimer.jpg" alt="dailytimer-img"><span>daily task</span></div>
-            <div class="box"><img src="assets/quote.jpg" alt="quote-img"><span>motivational quote</span></div>
-            <div class="box"><img src="assets/pomododmo'.jpg" alt="pomodomo-timer-img"><span>pomodomo timer</span></div>
-            <div class="box"><img src="assets/goals.jpg" alt="daily-goal-img"><span>daily goals</span></div>
-        </section>
+      <section class="showcase">
+        <div class="box" id="0">
+          <img src="assets/todo-img.jpg" alt="todo-img" /><span>todo list</span>
+        </div>
+        <div class="box" id="1">
+          <img src="assets/dailytimer.jpg" alt="dailytimer-img" /><span
+            >daily task</span
+          >
+        </div>
+        <div class="box" id="2">
+          <img src="assets/quote.jpg" alt="quote-img" /><span
+            >motivational quote</span
+          >
+        </div>
+        <div class="box" id="3">
+          <img src="assets/pomododmo'.jpg" alt="pomodomo-timer-img" /><span
+            >pomodomo timer</span
+          >
+        </div>
+        <div class="box" id="4">
+          <img src="assets/goals.jpg" alt="daily-goal-img" /><span
+            >daily goals</span
+          >
+        </div>
+      </section>
+      <section class="openBox todo">
+        <div class="top-wrapper">
+          <h2>Your personalised task list</h2>
+          <button class="close">close</button>
+        </div>
+        <div class="mid-wrapper">
+            <div class="box">
+                <form action="" method="">
+                    <input class="form-elem" type="text" name="name" id="name" placeholder="Your Name">
+                    <textarea class="form-elem" name="task-desc" id="tast-desc" placeholder="Enter Todo Description here.."></textarea>
+                </form>
+                <button>add task</button>
+            </div>
+            <div class="box">2</div>
+        </div>
+      </section>
+      <section class="openBox task">
+        <div class="top-wrapper">
+          <h2>daily task</h2>
+          <button class="close">close</button>
+        </div>
+      </section>
+      <section class="openBox quote">
+        <div class="top-wrapper">
+          <h2>motivational quote</h2>
+          <button class="close">close</button>
+        </div>
+      </section>
+      <section class="openBox pomodomo">
+        <div class="top-wrapper">
+          <h2>pomodomo timer</h2>
+          <button class="close">close</button>
+        </div>
+      </section>
+      <section class="openBox goal">
+        <div class="top-wrapper">
+          <h2>daily goals</h2>
+          <button class="close">close</button>
+        </div>
+      </section>
     </main>
-    <Script src="script.js"></Script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

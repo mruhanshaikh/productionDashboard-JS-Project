@@ -151,7 +151,7 @@ main .openBox .mid-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   gap: 2rem;
 }
 main .openBox .mid-wrapper .box {
@@ -171,8 +171,8 @@ main .openBox .mid-wrapper .box form {
   min-height: 50svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 1rem;
 }
 main .openBox .mid-wrapper .box form .form-elem {
@@ -180,9 +180,24 @@ main .openBox .mid-wrapper .box form .form-elem {
   flex: 1;
   width: 100%;
   padding: 1rem;
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  border: none;
+}
+main .openBox .mid-wrapper .box form ::-moz-placeholder {
+  color: var(--primaryColor);
+}
+main .openBox .mid-wrapper .box form ::placeholder {
+  color: var(--primaryColor);
+}
+main .openBox .mid-wrapper .box form :focus {
+  outline: 1px solid #E3E3E3;
 }
 main .openBox .mid-wrapper .box form :nth-child(2) {
   flex-grow: 4;
+}
+main .openBox .mid-wrapper .box form .input-wrapper :nth-child(2) {
+  margin-left: 0.5rem;
 }
 main .openBox .mid-wrapper .box button {
   width: 100%;
@@ -192,9 +207,51 @@ main .openBox .mid-wrapper .box button {
   color: var(--primaryColor);
   background-color: var(--secondaryColor);
   border: none;
-  cursor: pointer;
+  font-family: boldFont;
+  flex-grow: 1;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+main .openBox .mid-wrapper .box2 {
+  flex-grow: 2;
+}
+main .openBox .mid-wrapper .box2 .todo-items {
+  width: 100%;
+  height: 60svh;
+  overflow-y: scroll;
+}
+main .openBox .mid-wrapper .box2 .todo-items li {
+  text-transform: capitalize;
+  list-style: none;
+  padding: 1rem;
+  color: var(--primaryColor);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background-color: var(--secondaryColor);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+main .openBox .mid-wrapper .box2 .todo-items li details summary {
   font-family: boldFont;
 }
-main .openBox .mid-wrapper :nth-child(2) {
-  flex-grow: 2;
+main .openBox .mid-wrapper .box2 .todo-items li details h3 {
+  font-size: var(--labelFontSize);
+  font-family: lightFont;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+}
+main .openBox .mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
+  margin-left: 0.3rem;
+}
+
+@media (max-width: 900px) {
+  .openBox .mid-wrapper {
+    flex-direction: column !important;
+  }
+  .openBox .mid-wrapper .box {
+    width: 100%;
+  }
 }/*# sourceMappingURL=style.css.map */

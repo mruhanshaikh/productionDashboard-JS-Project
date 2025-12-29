@@ -103,7 +103,7 @@ main {
     }
     .mid-wrapper {
       width: 100%;
-      @include flex(row, flex-start, flex-start);
+      @include flex(row, flex-start, center);
       gap: 2rem;
       .box {
         flex: 1;
@@ -116,16 +116,30 @@ main {
         form {
           width: 100%;
           min-height: 50svh;
-          @include flex(column, center, center);
+          @include flex(column,flex-start,flex-start);
           gap: 1rem;
           .form-elem {
             border-radius: 0.5rem;
             flex: 1;
             width: 100%;
             padding: 1rem;
+            background-color:var(--secondaryColor);
+            color:var(--primaryColor);
+            border: none;
+          }
+          ::placeholder{
+            color:var(--primaryColor);
+          }
+          :focus{
+            outline:1px solid #E3E3E3;
           }
           :nth-child(2) {
             flex-grow: 4;
+          }
+          .input-wrapper{
+            :nth-child(2){
+              margin-left:0.5rem;
+            }
           }
         }
         button {
@@ -136,13 +150,61 @@ main {
           color: var(--primaryColor);
           background-color: var(--secondaryColor);
           border:none;
-          cursor:pointer;
           font-family:boldFont;
+          flex-grow:1;
+          opacity:0.5;
+          cursor:not-allowed;
         }
+
       }
-      :nth-child(2) {
-        flex-grow: 2;
+      .box2{
+        flex-grow:2;
+        .todo-items{
+          width:100%;
+          height:60svh;
+          overflow-y:scroll;
+          li{
+            text-transform: capitalize;
+            list-style: none;
+            padding:1rem;
+            color: var(--primaryColor);
+            line-height:1.2;
+            margin-bottom:1rem;
+            background-color:var(--secondaryColor);
+            @include flex(row,space-between,flex-start);
+            gap:10px;
+            details{
+              summary{
+                font-family:boldFont;
+                  // i{
+                  //   display:none;
+                  // }
+              }
+              h3{
+              font-size: var(--labelFontSize);
+              font-family:lightFont;
+              padding-top:0.5rem;
+              padding-left:1rem;
+            }
+            }
+            :nth-child(2){
+             :nth-child(2){
+              margin-left:0.3rem;
+             }
+            }
+          }
+        }
       }
     }
   }
+}
+@media (max-width:900px){
+ .openBox{
+  .mid-wrapper{
+   flex-direction:column !important;
+   .box{
+    width:100%;
+   }
+  }
+ }
 }

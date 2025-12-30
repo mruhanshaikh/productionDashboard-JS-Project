@@ -146,7 +146,7 @@ main .openBox .top-wrapper button {
   border: none;
   border-radius: 5px;
 }
-main .openBox .mid-wrapper {
+main .openBox .todo-mid-wrapper {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -154,7 +154,7 @@ main .openBox .mid-wrapper {
   align-items: center;
   gap: 2rem;
 }
-main .openBox .mid-wrapper .box {
+main .openBox .todo-mid-wrapper .box {
   flex: 1;
   min-height: 70svh;
   background-color: var(--trinityColor2);
@@ -166,7 +166,7 @@ main .openBox .mid-wrapper .box {
   border-radius: 1rem;
   padding: 2rem;
 }
-main .openBox .mid-wrapper .box form {
+main .openBox .todo-mid-wrapper .box form {
   width: 100%;
   min-height: 50svh;
   display: flex;
@@ -175,7 +175,10 @@ main .openBox .mid-wrapper .box form {
   align-items: flex-start;
   gap: 1rem;
 }
-main .openBox .mid-wrapper .box form .form-elem {
+main .openBox .todo-mid-wrapper .box form .textarea {
+  resize: none;
+}
+main .openBox .todo-mid-wrapper .box form .form-elem {
   border-radius: 0.5rem;
   flex: 1;
   width: 100%;
@@ -184,22 +187,22 @@ main .openBox .mid-wrapper .box form .form-elem {
   color: var(--primaryColor);
   border: none;
 }
-main .openBox .mid-wrapper .box form ::-moz-placeholder {
+main .openBox .todo-mid-wrapper .box form ::-moz-placeholder {
   color: var(--primaryColor);
 }
-main .openBox .mid-wrapper .box form ::placeholder {
+main .openBox .todo-mid-wrapper .box form ::placeholder {
   color: var(--primaryColor);
 }
-main .openBox .mid-wrapper .box form :focus {
+main .openBox .todo-mid-wrapper .box form :focus {
   outline: 1px solid #E3E3E3;
 }
-main .openBox .mid-wrapper .box form :nth-child(2) {
+main .openBox .todo-mid-wrapper .box form :nth-child(2) {
   flex-grow: 4;
 }
-main .openBox .mid-wrapper .box form .input-wrapper :nth-child(2) {
+main .openBox .todo-mid-wrapper .box form .input-wrapper :nth-child(2) {
   margin-left: 0.5rem;
 }
-main .openBox .mid-wrapper .box button {
+main .openBox .todo-mid-wrapper .box button {
   width: 100%;
   border-radius: 0.5rem;
   text-transform: uppercase;
@@ -212,15 +215,20 @@ main .openBox .mid-wrapper .box button {
   opacity: 0.5;
   cursor: not-allowed;
 }
-main .openBox .mid-wrapper .box2 {
+main .openBox .todo-mid-wrapper .box2 {
   flex-grow: 2;
 }
-main .openBox .mid-wrapper .box2 .todo-items {
+main .openBox .todo-mid-wrapper .box2 .emptyTodo {
+  color: var(--primaryColor);
+  text-align: center;
+  width: 100%;
+}
+main .openBox .todo-mid-wrapper .box2 .todo-items {
   width: 100%;
   height: 60svh;
   overflow-y: scroll;
 }
-main .openBox .mid-wrapper .box2 .todo-items li {
+main .openBox .todo-mid-wrapper .box2 .todo-items li {
   text-transform: capitalize;
   list-style: none;
   padding: 1rem;
@@ -234,24 +242,76 @@ main .openBox .mid-wrapper .box2 .todo-items li {
   align-items: flex-start;
   gap: 10px;
 }
-main .openBox .mid-wrapper .box2 .todo-items li details summary {
+main .openBox .todo-mid-wrapper .box2 .todo-items li details summary {
   font-family: boldFont;
 }
-main .openBox .mid-wrapper .box2 .todo-items li details h3 {
+main .openBox .todo-mid-wrapper .box2 .todo-items li details h3 {
   font-size: var(--labelFontSize);
   font-family: lightFont;
   padding-top: 0.5rem;
   padding-left: 1rem;
 }
-main .openBox .mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
+main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
   margin-left: 0.3rem;
+}
+main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) .active {
+  color: var(--trinityColor2);
+}
+main .openBox .task-mid-wrapper {
+  width: 100%;
+  background-color: var(--trinityColor2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 70svh;
+  overflow-y: scroll;
+}
+main .openBox .task-mid-wrapper .wrapper {
+  width: 48%;
+  background-color: var(--secondaryColor);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+main .openBox .task-mid-wrapper .wrapper .time {
+  font-size: var(--butFontSize);
+  font-family: boldFont;
+}
+main .openBox .task-mid-wrapper .wrapper .task {
+  margin-top: 0.5rem;
+}
+main .openBox .task-mid-wrapper .wrapper .task input {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  color: var(--primaryColor);
+  font-size: var(--labelFontSize);
+  font-family: lightFont;
+}
+main .openBox .task-mid-wrapper .wrapper .task :focus {
+  outline: none;
+}
+main .openBox .task-mid-wrapper .wrapper .task ::-moz-placeholder {
+  color: var(--primaryColor);
+}
+main .openBox .task-mid-wrapper .wrapper .task ::placeholder {
+  color: var(--primaryColor);
 }
 
 @media (max-width: 900px) {
-  .openBox .mid-wrapper {
+  .openBox .todo-mid-wrapper {
     flex-direction: column !important;
   }
-  .openBox .mid-wrapper .box {
+  .openBox .todo-mid-wrapper .box {
     width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .openBox .task-mid-wrapper .wrapper {
+    width: 100% !important;
   }
 }/*# sourceMappingURL=style.css.map */

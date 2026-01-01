@@ -250,7 +250,7 @@ main {
   .todo-mid-wrapper{
    flex-direction:column !important;
    .box{
-    padding:1rem;
+    padding:1rem !important; 
     width:100%;
    }
   }

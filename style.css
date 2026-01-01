@@ -307,7 +307,7 @@ main .openBox .task-mid-wrapper .wrapper .task ::placeholder {
     flex-direction: column !important;
   }
   .openBox .todo-mid-wrapper .box {
-    padding: 1rem;
+    padding: 1rem !important;
     width: 100%;
   }
 }

@@ -116,7 +116,7 @@ form.addEventListener('submit',(e)=>{
       if(e.target.classList.contains('active')){
         alert('Task Compleated !!')
       }else{
-        alert('Task Pending ...')
+        alert('Task Undo...')
       }
   })
 

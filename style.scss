@@ -193,7 +193,6 @@ main {
             }
             }
             :nth-child(2){
-              text-wrap:nowrap;
              :nth-child(2){
               margin-left:0.3rem;
              }
@@ -251,6 +250,7 @@ main {
   .todo-mid-wrapper{
    flex-direction:column !important;
    .box{
+    padding:1rem;
     width:100%;
    }
   }

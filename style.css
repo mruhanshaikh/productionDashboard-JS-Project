@@ -251,9 +251,6 @@ main .openBox .todo-mid-wrapper .box2 .todo-items li details h3 {
   padding-top: 0.5rem;
   padding-left: 1rem;
 }
-main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) {
-  text-wrap: nowrap;
-}
 main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
   margin-left: 0.3rem;
 }
@@ -310,6 +307,7 @@ main .openBox .task-mid-wrapper .wrapper .task ::placeholder {
     flex-direction: column !important;
   }
   .openBox .todo-mid-wrapper .box {
+    padding: 1rem;
     width: 100%;
   }
 }

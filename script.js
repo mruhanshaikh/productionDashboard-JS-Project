@@ -20,6 +20,7 @@ function homePage() {
 }
 homePage(); 
 function todoPage(){
+
   let form = document.querySelector('.todo-mid-wrapper>.box form');
 let input = document.querySelector('.todo-mid-wrapper>.box form input');
 let textarea = document.querySelector('.todo-mid-wrapper>.box form textarea');
@@ -121,27 +122,33 @@ form.addEventListener('submit',(e)=>{
 
 }
 todoPage();
-let taskMidWrapper = document.querySelector('.task-mid-wrapper');
+function dailyTask(){
+  let taskMidWrapper = document.querySelector('.task-mid-wrapper');
 let wrapper = document.querySelector('.task-mid-wrapper>.wrapper');
 let time = document.querySelector('.task-mid-wrapper>.wrapper .time');
 let task = document.querySelector('.task-mid-wrapper>.wrapper .task');
 let sequence=Array.from({ length: 24 },(_,id)=>id);
 
 let inputs=JSON.parse(localStorage.getItem('inputs'))||[];
-showData()
 
 function showData(){
     let data='';
-    sequence.forEach((e)=>{
+    sequence.forEach((e,id)=>{
     data+=`<div class="wrapper">
              <div class="time">${e}:00-${e+1}:00</div>
-               <div class="task"><input class='input' type='text' placeholder='...'></div>
+               <div class="task"><input data-index=${id} class='input' type='text' placeholder='...' value="${inputs[e]||""}"></div>
           </div>`
 });
    taskMidWrapper.innerHTML=data;
 }
+showData();
 taskMidWrapper.addEventListener('input',(e)=>{
-    if(!e.target.classList.contains('input')) return;
-    localStorage.setItem('inputs',JSON.stringify(e.target.value));
-    showData();
+    if(!e.target.classList.contains('input')) return; 
+    const cleanedValue = e.target.value
+   .replace(/\s+/g, ' ')
+   .trim();
+    inputs[e.target.dataset.index]=cleanedValue;
+    localStorage.setItem('inputs',JSON.stringify(inputs));
 });
+}
+dailyTask();

@@ -21,7 +21,7 @@ function homePage() {
 homePage(); 
 function todoPage(){
 
-  let form = document.querySelector('.todo-mid-wrapper>.box form');
+let form = document.querySelector('.todo-mid-wrapper>.box form');
 let input = document.querySelector('.todo-mid-wrapper>.box form input');
 let textarea = document.querySelector('.todo-mid-wrapper>.box form textarea');
 let checkbox = document.querySelector('.todo-mid-wrapper>.box form .input-wrapper input');
@@ -41,7 +41,7 @@ todos.forEach((e,id)=>{
                   </summary>
                   <h3>${e.todoDesc}</h3>
                   </details>
-                  <span>
+                  <span class="icons">
                   
                     <i class="ri-pencil-fill" data-index="${id}"></i>
                     <i class="ri-delete-bin-6-fill" data-index="${id}"></i>

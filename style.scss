@@ -200,6 +200,9 @@ main {
               color:var(--trinityColor2);
              }
             }
+            .icons{
+              text-wrap:nowrap;
+            }
           }
         }
       }
@@ -253,8 +256,19 @@ main {
     padding:1rem !important; 
     width:100%;
    }
+   .box2{
+      .todo-items{
+        li{
+            :nth-child(2){
+             :nth-child(2){
+              margin-left:0!important;
+             }
+        }
+      }
+   }
   }
  }
+}
 }
 @media (max-width:500px){
  .openBox{

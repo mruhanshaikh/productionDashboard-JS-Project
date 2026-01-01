@@ -252,7 +252,7 @@ main .openBox .todo-mid-wrapper .box2 .todo-items li details h3 {
   padding-left: 1rem;
 }
 main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) {
-  word-wrap: nowrap;
+  text-wrap: nowrap;
 }
 main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
   margin-left: 0.3rem;

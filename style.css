@@ -58,7 +58,7 @@ main {
 }
 main .showcase {
   width: 100%;
-  min-height: 100svh;
+  min-height: 80svh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -110,6 +110,42 @@ main .showcase .box span {
   font-size: var(--labelFontSize);
   text-transform: capitalize;
   pointer-events: none;
+}
+main .mq-sec {
+  width: 100%;
+  min-height: 20svh;
+  background: linear-gradient(to bottom, var(--trinityColor2), var(--trinityColor));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+main .quote-box {
+  width: auto;
+  color: var(--primaryColor);
+  text-align: center;
+  font-size: var(--subHeadingFontSize);
+  font-family: boldFont;
+  background-color: var(--secondaryColor);
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  box-shadow: 0 0 10px var(--primaryColor);
+}
+main .quote-box .top-quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2rem;
+  translate: 25%;
+}
+main .quote-box .bottom-quote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2rem;
+  translate: -25%;
 }
 main .openBox {
   width: 100%;

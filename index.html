@@ -37,29 +37,51 @@
           >
         </div>
       </section>
+      <section class="mq-sec">
+        <div class="quote-box">
+          <q cite="https://api-ninjas.com/api/quotes#v2-randomquotes"></q>
+          <img class="bottom-quote"src="assets/quote1.png" alt="top-left-quote" >
+           <img class="top-quote"src="assets/quote2.png"  alt="bottom-right-quote">
+        </div>
+      </section>
       <section class="openBox todo">
         <div class="top-wrapper">
           <h2>Your personalised task list</h2>
           <button class="close">close</button>
         </div>
         <div class="todo-mid-wrapper">
-            <div class="box">
-                <form id="todo-form">
-                    <input class="form-elem" type="text" name="name" id="name" placeholder="Your Todo Name" required>
-                    <textarea class="form-elem textarea" name="task-desc" id="tast-desc" placeholder="Enter Todo Description here.."required></textarea>
-                    <div class="input-wrapper">
-                       <input type="checkbox" name="checkbox" id="checkbox">
-                    <label for="checkbox">Mark as Important</label>
-                    </div>
-                </form>
-                <button id="todoFormSubmit"type="submit" form="todo-form">add task</button>
-            </div>
-            <div class="box box2">
-              <div class="emptyTodo">Nothing here!! Add your First Task ...</div>
-              <ul class="todo-items">
-                <!-- todos -->
-              </ul>
-            </div>
+          <div class="box">
+            <form id="todo-form">
+              <input
+                class="form-elem"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Your Todo Name"
+                required
+              />
+              <textarea
+                class="form-elem textarea"
+                name="task-desc"
+                id="tast-desc"
+                placeholder="Enter Todo Description here.."
+                required
+              ></textarea>
+              <div class="input-wrapper">
+                <input type="checkbox" name="checkbox" id="checkbox" />
+                <label for="checkbox">Mark as Important</label>
+              </div>
+            </form>
+            <button id="todoFormSubmit" type="submit" form="todo-form">
+              add task
+            </button>
+          </div>
+          <div class="box box2">
+            <div class="emptyTodo">Nothing here!! Add your First Task ...</div>
+            <ul class="todo-items">
+              <!-- todos -->
+            </ul>
+          </div>
         </div>
       </section>
       <section class="openBox task">
@@ -67,7 +89,7 @@
           <h2>plan your day to be more productive</h2>
           <button class="close">close</button>
         </div>
-        <div class="task-mid-wrapper"> 
+        <div class="task-mid-wrapper">
           <!-- wrapper -->
         </div>
       </section>

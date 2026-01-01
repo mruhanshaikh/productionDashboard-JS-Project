@@ -3,10 +3,12 @@ function homePage() {
   let allopenbox = document.querySelectorAll(".openBox");
   let showcase = document.querySelector(".showcase");
   let close = document.querySelectorAll(".close");
+  let mq=document.querySelector('.mq-sec');
   let x;
   allbox.forEach((elem) => {
     elem.addEventListener("click", (e) => {
       showcase.style.display = "none";
+      mq.style.display="none";
       x = allopenbox[e.target.id];
       x.style.display = "block";
     });
@@ -14,6 +16,7 @@ function homePage() {
   close.forEach((e) => {
     e.addEventListener("click", () => {
       showcase.style.display = "flex";
+      mq.style.display="flex";
       x.style.display = "none";
     });
   });
@@ -152,3 +155,22 @@ taskMidWrapper.addEventListener('input',(e)=>{
 });
 }
 dailyTask();
+let quote =document.querySelector('.quote-box q');
+async function fetchQuote(){
+  try{
+    const response=await fetch('https://api.api-ninjas.com/v2/randomquotes',{
+      headers:{'X-Api-Key':'Vs6szsaLhL5WqPS96dVwjQ==iSvfW99ISXMdx4zN'}
+    });
+    if(!response.ok){
+      throw new Error("Status Code is Different");
+    }
+    const data=await response.json();
+    quote.textContent=data[0].quote
+  }catch(error){
+    console.error(error);
+  }
+  finally{
+    console.log('Data Fetched Sucessfully');
+  }
+}
+fetchQuote();

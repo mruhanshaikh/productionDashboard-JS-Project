@@ -25,7 +25,7 @@ main {
   flex-wrap: wrap;
   .showcase {
     width: 100%;
-    min-height: 100svh;
+    min-height: 80svh;
     @include flex(row, flex-start, flex-start);
     gap: 1rem;
     padding: 2rem;
@@ -70,6 +70,40 @@ main {
       }
     }
   }
+  .mq-sec{
+    width:100%;
+    min-height:20svh;
+    background:linear-gradient(to bottom,var(--trinityColor2),var(--trinityColor));
+    @include flex(column,center,center);
+    padding:1rem;
+    }
+    .quote-box{
+      width:auto;
+      color:var(--primaryColor);
+      text-align: center;
+      font-size:var(--subHeadingFontSize);
+      font-family:boldFont;
+      background-color:var(--secondaryColor);
+      padding:2rem;
+      border-radius:1rem; 
+      position: relative;
+      box-shadow:0 0 10px var(--primaryColor);
+      .top-quote{
+        position: absolute;
+        top:0;
+        left:0;
+        width:2rem;
+        translate:25%;
+      }
+      .bottom-quote{
+        position: absolute;  
+        bottom:0;
+        right:0;
+        width:2rem;
+        translate:-25%;
+        
+      }
+    }
   .openBox {
     width: 100%;
     min-height: 100svh;

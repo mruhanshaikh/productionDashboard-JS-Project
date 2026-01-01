@@ -130,7 +130,7 @@ main .quote-box {
   background-color: var(--secondaryColor);
   padding: 2rem;
   border-radius: 1rem;
-  position: relative;
+  position: fixed;
   box-shadow: 0 0 10px var(--primaryColor);
 }
 main .quote-box .top-quote {

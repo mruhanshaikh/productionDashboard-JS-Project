@@ -340,6 +340,62 @@ main .openBox .task-mid-wrapper .wrapper .task ::-moz-placeholder {
 main .openBox .task-mid-wrapper .wrapper .task ::placeholder {
   color: var(--primaryColor);
 }
+main .openBox .pomodomo-mid-wrapper {
+  width: 100%;
+  min-height: 70svh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--trinityColor2);
+  flex-wrap: wrap;
+}
+main .openBox .pomodomo-mid-wrapper .left {
+  border: 2px solid red;
+  flex: 1 1 400px;
+  min-height: 60svh;
+  background: linear-gradient(to right, var(--trinityColor2), var(--trinityColor));
+}
+main .openBox .pomodomo-mid-wrapper .left video {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .openBox .pomodomo-mid-wrapper .right {
+  min-height: 60svh;
+  border: 2px solid red;
+  flex: 1 1 400px;
+  background: linear-gradient(to right, var(--trinityColor), var(--trinityColor2));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+main .openBox .pomodomo-mid-wrapper .right .buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+main .openBox .pomodomo-mid-wrapper .right .time {
+  font-family: boldFont;
+  font-size: var(--headingFontSize);
+  color: var(--primaryColor);
+}
+main .openBox .pomodomo-mid-wrapper .right button {
+  cursor: pointer;
+  text-transform: capitalize;
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  font-size: var(--subHeadingFontSize);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
 
 @media (max-width: 900px) {
   .openBox .todo-mid-wrapper {

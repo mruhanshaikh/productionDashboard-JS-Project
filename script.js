@@ -180,11 +180,12 @@ let pausebtn = document.querySelector('.pause');
 let resetbtn = document.querySelector('.reset');
 let timeshow = document.querySelector('.right .time');
 let workSession=document.querySelector('.work-session');
-let totalSec = 25 * 60;
+let totalSec = Number(localStorage.getItem('time')) || 25 * 60;
+let isWork=true;
+updateTimer();
 function pad(s){
   return String(s).padStart(2,0);
 }
-let isWork=true;
 function updateTimer(){
   let min = Math.floor(totalSec/60);
   let sec = totalSec % 60;
@@ -197,6 +198,7 @@ startbtn.addEventListener('click',()=>{
   clear=setInterval(()=>{
   if(totalSec >0){
   totalSec--;
+  localStorage.setItem('time',totalSec);
   updateTimer();
   }else{
     clearInterval(clear);

@@ -396,6 +396,15 @@ main .openBox .pomodomo-mid-wrapper .right button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
+  transition: all 0.3s linear;
+}
+main .openBox .pomodomo-mid-wrapper .right button:hover {
+  scale: 0.9;
+  opacity: 0.8;
+}
+main .openBox .pomodomo-mid-wrapper .right button:active {
+  scale: 0.9;
+  opacity: 0.8;
 }
 
 @media (max-width: 900px) {

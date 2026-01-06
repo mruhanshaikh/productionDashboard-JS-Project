@@ -174,3 +174,45 @@ async function fetchQuote(){
   }
 }
 fetchQuote();
+function pomodomoTimer(){
+let startbtn = document.querySelector('.start');
+let pausebtn = document.querySelector('.pause');
+let resetbtn = document.querySelector('.reset');
+let timeshow = document.querySelector('.right .time');
+let workSession=document.querySelector('.work-session');
+let totalSec = 25 * 60;
+function pad(s){
+  return String(s).padStart(2,0);
+}
+let isWork=true;
+function updateTimer(){
+  let min = Math.floor(totalSec/60);
+  let sec = totalSec % 60;
+  timeshow.innerHTML =`${pad(min)}:${pad(sec)}`;
+  isWork?workSession.innerHTML='work session':workSession.innerHTML='break';
+}
+let clear;
+startbtn.addEventListener('click',()=>{
+  clearInterval(clear);
+  clear=setInterval(()=>{
+  if(totalSec >0){
+  totalSec--;
+  updateTimer();
+  }else{
+    clearInterval(clear);
+    isWork =!isWork;
+    totalSec = isWork ? 25 * 60 : 5 * 60;
+    updateTimer();
+  }
+},1000);
+})
+pausebtn.addEventListener('click',()=>{
+  clearInterval(clear);
+});
+resetbtn.addEventListener('click',()=>{
+    clearInterval(clear);
+    totalSec = isWork ? 25 * 60 : 5 * 60;
+    updateTimer();
+});
+}
+pomodomoTimer();

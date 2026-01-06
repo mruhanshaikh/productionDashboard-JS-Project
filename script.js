@@ -181,7 +181,7 @@ let resetbtn = document.querySelector('.reset');
 let timeshow = document.querySelector('.right .time');
 let workSession=document.querySelector('.work-session');
 let totalSec = Number(localStorage.getItem('time')) || 25 * 60;
-let isWork=true;
+let isWork=JSON.parse(localStorage.getItem('isWork')||true);
 updateTimer();
 function pad(s){
   return String(s).padStart(2,0);
@@ -203,7 +203,9 @@ startbtn.addEventListener('click',()=>{
   }else{
     clearInterval(clear);
     isWork =!isWork;
+    localStorage.setItem('isWork',JSON.stringify(isWork));
     totalSec = isWork ? 25 * 60 : 5 * 60;
+    localStorage.setItem('time',totalSec);
     updateTimer();
   }
 },1000);
@@ -214,6 +216,7 @@ pausebtn.addEventListener('click',()=>{
 resetbtn.addEventListener('click',()=>{
     clearInterval(clear);
     totalSec = isWork ? 25 * 60 : 5 * 60;
+    localStorage.setItem('time',totalSec);
     updateTimer();
 });
 }

@@ -8,6 +8,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-color: var(--trinityColor);
   @include flex(row, center, flex-start);
   font-size: var(--bodyFontSize);
@@ -53,7 +54,7 @@ main {
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 20px;
-        object-position: top;
+        object-position:30% 30%;
         pointer-events: none;
       }
       span {
@@ -140,13 +141,14 @@ main {
       @include flex(row, flex-start, center);
       gap: 2rem;
       .box {
-        flex: 1;
-        min-height: 70svh;
+        // flex: 1;
+        width:30%;
+        height: 80svh;
         background-color: var(--trinityColor2);
         @include flex(column, flex-start, flex-start);
         gap: 1rem;
         border-radius: 1rem;
-        padding: 2rem;
+        padding:1rem;
         form {
           width: 100%;
           min-height: 50svh;
@@ -195,15 +197,15 @@ main {
 
       }
       .box2{
-        flex-grow:2;
-        .emptyTodo{
+        flex-grow:1;
+        .compleateTodo,.emptyTodo{
           color:var(--primaryColor);
           text-align:center;
           width:100%;
         }
         .todo-items{
           width:100%;
-          height:60svh;
+          height:70%;
           overflow-y:scroll;
           li{
             text-transform: capitalize;
@@ -238,6 +240,10 @@ main {
               text-wrap:nowrap;
             }
           }
+        }
+        .compleated-todo{
+          height:30%;
+          overflow-y: scroll;
         }
       }
     }
@@ -339,12 +345,15 @@ main {
   }
 }
 @media (max-width:900px){
+  body{
+    overflow: scroll;
+  }
  .openBox{
   .todo-mid-wrapper{
    flex-direction:column !important;
    .box{
     padding:1rem !important; 
-    width:100%;
+    width:100% !important;
    }
    .box2{
       .todo-items{

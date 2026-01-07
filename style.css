@@ -32,6 +32,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-color: var(--trinityColor);
   display: flex;
   flex-direction: row;
@@ -95,8 +96,8 @@ main .showcase .box img {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 20px;
-  -o-object-position: top;
-     object-position: top;
+  -o-object-position: 30% 30%;
+     object-position: 30% 30%;
   pointer-events: none;
 }
 main .showcase .box span {
@@ -191,8 +192,8 @@ main .openBox .todo-mid-wrapper {
   gap: 2rem;
 }
 main .openBox .todo-mid-wrapper .box {
-  flex: 1;
-  min-height: 70svh;
+  width: 30%;
+  height: 80svh;
   background-color: var(--trinityColor2);
   display: flex;
   flex-direction: column;
@@ -200,7 +201,7 @@ main .openBox .todo-mid-wrapper .box {
   align-items: flex-start;
   gap: 1rem;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 1rem;
 }
 main .openBox .todo-mid-wrapper .box form {
   width: 100%;
@@ -252,16 +253,16 @@ main .openBox .todo-mid-wrapper .box button {
   cursor: not-allowed;
 }
 main .openBox .todo-mid-wrapper .box2 {
-  flex-grow: 2;
+  flex-grow: 1;
 }
-main .openBox .todo-mid-wrapper .box2 .emptyTodo {
+main .openBox .todo-mid-wrapper .box2 .compleateTodo, main .openBox .todo-mid-wrapper .box2 .emptyTodo {
   color: var(--primaryColor);
   text-align: center;
   width: 100%;
 }
 main .openBox .todo-mid-wrapper .box2 .todo-items {
   width: 100%;
-  height: 60svh;
+  height: 70%;
   overflow-y: scroll;
 }
 main .openBox .todo-mid-wrapper .box2 .todo-items li {
@@ -295,6 +296,10 @@ main .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) .active {
 }
 main .openBox .todo-mid-wrapper .box2 .todo-items li .icons {
   text-wrap: nowrap;
+}
+main .openBox .todo-mid-wrapper .box2 .compleated-todo {
+  height: 30%;
+  overflow-y: scroll;
 }
 main .openBox .task-mid-wrapper {
   width: 100%;
@@ -408,12 +413,15 @@ main .openBox .pomodomo-mid-wrapper .right button:active {
 }
 
 @media (max-width: 900px) {
+  body {
+    overflow: scroll;
+  }
   .openBox .todo-mid-wrapper {
     flex-direction: column !important;
   }
   .openBox .todo-mid-wrapper .box {
     padding: 1rem !important;
-    width: 100%;
+    width: 100% !important;
   }
   .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
     margin-left: 0 !important;

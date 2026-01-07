@@ -14,16 +14,16 @@
     <main>
       <section class="showcase">
         <div class="box" id="0">
-          <img src="assets/todo-img.jpg" alt="todo-img" /><span>todo list</span>
+          <img src="assets/todo-img.jpg" alt="todo-img" /><span>Task Planner</span>
         </div>
         <div class="box" id="1">
           <img src="assets/dailytimer.jpg" alt="dailytimer-img" /><span
-            >daily task</span
+            >Time Blocking</span
           >
         </div>
         <div class="box" id="2">
-          <img src="assets/quote.jpg" alt="quote-img" /><span
-            >motivational quote</span
+          <img src="assets/kanban.jpg" alt="kanban-img" /><span
+            >Kanban board</span
           >
         </div>
         <div class="box" id="3">
@@ -57,14 +57,14 @@
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Your Todo Name"
+                placeholder="Your Task Name"
                 required
               />
               <textarea
                 class="form-elem textarea"
                 name="task-desc"
                 id="tast-desc"
-                placeholder="Enter Todo Description here.."
+                placeholder="Enter Task Description here.."
                 required
               ></textarea>
               <div class="input-wrapper">
@@ -77,16 +77,22 @@
             </button>
           </div>
           <div class="box box2">
-            <div class="emptyTodo">Nothing here!! Add your First Task ...</div>
+            <div class="pending">Pending ❎</div>
+            <div class="emptyTodo">Add your First Task ...</div>
             <ul class="todo-items">
               <!-- todos -->
+            </ul>
+            <div class="compleated">Compleated ✅</div>
+            <div class="compleateTodo">Compleate your First Task ...</div>
+            <ul class="todo-items compleated-todo">
+              <!-- Compleated todo -->
             </ul>
           </div>
         </div>
       </section>
       <section class="openBox task">
         <div class="top-wrapper">
-          <h2>plan your day to be more productive</h2>
+          <h2>plan your day with time blocking technique</h2>
           <button class="close">close</button>
         </div>
         <div class="task-mid-wrapper">
@@ -95,7 +101,7 @@
       </section>
       <section class="openBox quote">
         <div class="top-wrapper">
-          <h2>motivational quote</h2>
+          <h2>kanban Board</h2>
           <button class="close">close</button>
         </div>
       </section>

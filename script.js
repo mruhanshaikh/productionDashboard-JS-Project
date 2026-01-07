@@ -31,28 +31,47 @@ let checkbox = document.querySelector('.todo-mid-wrapper>.box form .input-wrappe
 let todoItems=document.querySelector('.box2>.todo-items');
 let todoFormSubmit=document.getElementById('todoFormSubmit');
 let emptyTodo=document.querySelector('.emptyTodo');
-todoFormSubmit.disabled=true;
+let compleateTodo=document.querySelector('.compleateTodo');
+let taskDone=document.querySelector('.compleated-todo');
 let todos = JSON.parse(localStorage.getItem('todo')) || [];
 showTodos();
+
 function showTodos(){
 (todos.length===0)?emptyTodo.style.display='block':emptyTodo.style.display='none';
+// logic for filterig UI based on importance
+let imp = todos.filter(e=>e.imp === true);
+let notImp = todos.filter(e=>e.imp === false);
+let compleate=todos.filter(e=>e.compleated === true );
+(compleate.length===0)?compleateTodo.style.display='block':compleateTodo.style.display='none';
+// let inCompleate=todos.filter(e=>e.compleated === false );
+let merge = [...imp,...notImp];
 let todo='';
-todos.forEach((e,id)=>{
-    todo+=`<li id=${id}>
+merge.forEach((e)=>{
+    todo+=`<li>
                   <details>
                   <summary>${e.todoName} <sup><i class="${e.imp?'ri-verified-badge-fill':''}"></i></sup>
                   </summary>
                   <h3>${e.todoDesc}</h3>
                   </details>
-                  <span class="icons">
+                  <span class="icons">  
                   
-                    <i class="ri-pencil-fill" data-index="${id}"></i>
-                    <i class="ri-delete-bin-6-fill" data-index="${id}"></i>
-                    <i class="ri-target-fill" data-index="${id}"></i>
+                    <i class="ri-pencil-fill" data-id="${e.id}"></i>
+                    <i class="ri-delete-bin-6-fill" data-id="${e.id}"></i>
+                    <i class="ri-target-fill ${e.compleated?'active':''}" data-id="${e.id}"></i>
                   </span>
                 </li>`; 
 });
 todoItems.innerHTML=todo;
+let done='';
+compleate.forEach(e=>{
+ done+=`<li>
+                  <details>
+                  <summary>${e.todoName}</summary>
+                  <h3>${e.todoDesc}</h3>
+                  </details>
+                </li>`; 
+});
+taskDone.innerHTML=done;
 }
 function validateForm(){
   const title = input.value.trim();
@@ -67,21 +86,25 @@ function validateForm(){
     todoFormSubmit.disabled=true;
   }
 }
+
 let editIndex = null;
 input.addEventListener('input', validateForm);
 textarea.addEventListener('input', validateForm);
+
 form.addEventListener('submit',(e)=>{
   e.preventDefault(); 
   if(input.value.trim()!==''&& textarea.value.trim()!== ''){
   const data= {
+  id:(editIndex!==null)?todos[editIndex].id:Date.now(),
   todoName:input.value,
   todoDesc:textarea.value,
-  imp:checkbox.checked
+  imp:checkbox.checked,
+  compleated:false
  }
       if(editIndex!==null){
       todos[editIndex]=data;
       editIndex=null;
-      }else{  
+      }else{
       todos.push(data);
       }
   }else{
@@ -95,15 +118,18 @@ form.addEventListener('submit',(e)=>{
 
   todoItems.addEventListener('click',(e)=>{
     if(!e.target.classList.contains('ri-pencil-fill')) return;
-    const index=e.target.dataset.index;
+    const id=Number(e.target.dataset.id);
+    let index=todos.findIndex(e=>e.id === id);
     editIndex=index;
     input.value=todos[index].todoName;
     textarea.value=todos[index].todoDesc;
     checkbox.checked=todos[index].imp;
   })
+
   todoItems.addEventListener('click',(e)=>{
     if(!e.target.classList.contains('ri-delete-bin-6-fill')) return;
-    const index=e.target.dataset.index;
+    const id=Number(e.target.dataset.id);
+    let index=todos.findIndex(e=>e.id===id);
     let x=confirm("Are you sure you want to delete this todo ??");
     if(x){
         todos.splice(index,1);
@@ -112,16 +138,23 @@ form.addEventListener('submit',(e)=>{
       } 
   })
   
-    todoItems.addEventListener('click',(e)=>{
-    if(!e.target.classList.contains('ri-target-fill')) return;
-      const index=e.target.dataset.index;
-      e.target.classList.toggle('active');
-      if(e.target.classList.contains('active')){
-        alert('Task Compleated !!')
-      }else{
-        alert('Task Undo...')
-      }
-  })
+   todoItems.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('ri-target-fill')) return;
+
+  const id = Number(e.target.dataset.id);
+  const index = todos.findIndex(t => t.id === id);
+
+  if (!todos[index].compleated) {
+    alert('Task Completed !!');
+    todos[index].compleated = true;
+  } else {
+    alert('Task Undo...');
+    todos[index].compleated = false;
+  }
+
+  localStorage.setItem('todo', JSON.stringify(todos));
+  showTodos();
+});
 
 }
 todoPage();

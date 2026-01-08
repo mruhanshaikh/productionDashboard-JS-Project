@@ -23,7 +23,6 @@ function homePage() {
 }
 homePage(); 
 function todoPage(){
-
 let form = document.querySelector('.todo-mid-wrapper>.box form');
 let input = document.querySelector('.todo-mid-wrapper>.box form input');
 let textarea = document.querySelector('.todo-mid-wrapper>.box form textarea');
@@ -159,7 +158,7 @@ form.addEventListener('submit',(e)=>{
 }
 todoPage();
 function dailyTask(){
-  let taskMidWrapper = document.querySelector('.task-mid-wrapper');
+let taskMidWrapper = document.querySelector('.task-mid-wrapper');
 let wrapper = document.querySelector('.task-mid-wrapper>.wrapper');
 let time = document.querySelector('.task-mid-wrapper>.wrapper .time');
 let task = document.querySelector('.task-mid-wrapper>.wrapper .task');

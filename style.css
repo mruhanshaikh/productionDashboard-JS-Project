@@ -345,6 +345,18 @@ main .openBox .task-mid-wrapper .wrapper .task ::-moz-placeholder {
 main .openBox .task-mid-wrapper .wrapper .task ::placeholder {
   color: var(--primaryColor);
 }
+main .openBox .kanban-mid-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+main .openBox .kanban-mid-wrapper .box {
+  flex: 1;
+  background-color: var(--trinityColor2);
+  min-height: 90svh;
+}
 main .openBox .pomodomo-mid-wrapper {
   width: 100%;
   min-height: 70svh;

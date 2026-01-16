@@ -286,6 +286,15 @@ main {
       }
       }
     }
+    .kanban-mid-wrapper{
+      @include flex(row,flex-start,flex-start);
+      gap:1rem;
+      .box{
+        flex:1;
+        background-color: var(--trinityColor2);
+        min-height:90svh;
+      }
+    }
     .pomodomo-mid-wrapper{
       width:100%;
       min-height:70svh;

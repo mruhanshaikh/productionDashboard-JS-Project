@@ -355,7 +355,7 @@ main .openBox .kanban-mid-wrapper {
 main .openBox .kanban-mid-wrapper .box {
   flex: 1;
   background-color: var(--trinityColor2);
-  min-height: 90svh;
+  min-height: 80svh;
 }
 main .openBox .pomodomo-mid-wrapper {
   width: 100%;

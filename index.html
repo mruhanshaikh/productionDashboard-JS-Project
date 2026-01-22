@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,9 @@
     <main>
       <section class="showcase">
         <div class="box" id="0">
-          <img src="assets/todo-img.jpg" alt="todo-img" /><span>Task Planner</span>
+          <img src="assets/todo-img.jpg" alt="todo-img" /><span
+            >Task Planner</span
+          >
         </div>
         <div class="box" id="1">
           <img src="assets/dailytimer.jpg" alt="dailytimer-img" /><span
@@ -40,8 +42,16 @@
       <section class="mq-sec">
         <div class="quote-box">
           <q cite="https://api-ninjas.com/api/quotes#v2-randomquotes"></q>
-          <img class="bottom-quote"src="assets/quote1.png" alt="top-left-quote" >
-           <img class="top-quote"src="assets/quote2.png"  alt="bottom-right-quote">
+          <img
+            class="bottom-quote"
+            src="assets/quote1.png"
+            alt="top-left-quote"
+          />
+          <img
+            class="top-quote"
+            src="assets/quote2.png"
+            alt="bottom-right-quote"
+          />
         </div>
       </section>
       <section class="openBox todo">
@@ -102,12 +112,33 @@
       <section class="openBox kanban-board">
         <div class="top-wrapper">
           <h2>kanban Board</h2>
-          <button class="close">close</button>
+          <div class="button-wrapper">
+            <button class="addTask">Add Task</button>
+            <button class="close">close</button>
+          </div>
         </div>
         <div class="kanban-mid-wrapper">
-          <div class="box1 box">1</div>
-          <div class="box2 box">2</div>
-          <div class="box3 box">3</div>
+          <div class="box1 box">
+            <div class="box-top">To Do<span>0</span></div>
+            <div class="items">
+              <div class="item">
+              <h3>Start API</h3>
+              <p>Setup the auth API</p>
+              <button>Delete</button>
+              </div>
+               <div class="item">
+              <h3>Start API</h3>
+              <p>Setup the auth API</p>
+              <button>Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="box2 box">
+            <div class="box-top">In Progress<span>0</span></div>
+          </div>
+          <div class="box3 box">
+            <div class="box-top">Done<span>0</span></div>
+          </div>
         </div>
       </section>
       <section class="openBox pomodomo">
@@ -117,16 +148,22 @@
         </div>
         <div class="pomodomo-mid-wrapper">
           <div class="left">
-            <video src="assets/motion-graphic-pomodomo-1.mp4  " autoplay loop muted playsinline ></video>
+            <video
+              src="assets/motion-graphic-pomodomo-1.mp4  "
+              autoplay
+              loop
+              muted
+              playsinline
+            ></video>
           </div>
           <div class="right">
-          <button class="work-session">work session</button>
-          <div class="time">00:00</div>
-          <div class="buttons-wrapper">
-             <button class="start">start</button>
-             <button class="pause">pause</button>
-             <button class="reset">reset</button>
-          </div>
+            <button class="work-session">work session</button>
+            <div class="time">00:00</div>
+            <div class="buttons-wrapper">
+              <button class="start">start</button>
+              <button class="pause">pause</button>
+              <button class="reset">reset</button>
+            </div>
           </div>
         </div>
       </section>

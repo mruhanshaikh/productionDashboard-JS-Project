@@ -149,7 +149,7 @@ main .quote-box .bottom-quote {
   translate: -25%;
 }
 main .openBox {
-  width: 100%;
+  min-width: 100%;
   min-height: 100svh;
   padding: 2rem;
   display: none;
@@ -231,7 +231,7 @@ main .openBox .todo-mid-wrapper .box form ::placeholder {
   color: var(--primaryColor);
 }
 main .openBox .todo-mid-wrapper .box form :focus {
-  outline: 1px solid #E3E3E3;
+  outline: 1px solid #e3e3e3;
 }
 main .openBox .todo-mid-wrapper .box form :nth-child(2) {
   flex-grow: 4;
@@ -255,7 +255,8 @@ main .openBox .todo-mid-wrapper .box button {
 main .openBox .todo-mid-wrapper .box2 {
   flex-grow: 1;
 }
-main .openBox .todo-mid-wrapper .box2 .compleateTodo, main .openBox .todo-mid-wrapper .box2 .emptyTodo {
+main .openBox .todo-mid-wrapper .box2 .compleateTodo,
+main .openBox .todo-mid-wrapper .box2 .emptyTodo {
   color: var(--primaryColor);
   text-align: center;
   width: 100%;
@@ -348,14 +349,54 @@ main .openBox .task-mid-wrapper .wrapper .task ::placeholder {
 main .openBox .kanban-mid-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 main .openBox .kanban-mid-wrapper .box {
+  min-width: 250px;
   flex: 1;
   background-color: var(--trinityColor2);
-  min-height: 90svh;
+  height: 80svh;
+  overflow-y: scroll;
+  padding: 0.5rem;
+}
+main .openBox .kanban-mid-wrapper .box .box-top {
+  min-height: 30px;
+  background-color: var(--secondaryColor);
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--labelFontSize);
+  font-family: lightFont;
+  margin-bottom: 0.5rem;
+}
+main .openBox .kanban-mid-wrapper .box .items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+main .openBox .kanban-mid-wrapper .box .items .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  background-color: var(--trinityColor);
+  padding: 0.5rem;
+}
+main .openBox .kanban-mid-wrapper .box .items .item button {
+  font-size: var(--labelFontSize);
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  border: none;
+  font-family: boldFont;
+  align-self: flex-end;
+  padding: 0.5rem;
 }
 main .openBox .pomodomo-mid-wrapper {
   width: 100%;

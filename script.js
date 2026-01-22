@@ -253,3 +253,17 @@ resetbtn.addEventListener('click',()=>{
 });
 }
 pomodomoTimer();
+let todo = document.querySelector('.box1');
+let progress = document.querySelector('.box2');
+let done = document.querySelector('.box3');
+let addTask= document.querySelector('.addTask');
+let addoverlay = document.querySelector('.addoverlay');
+let form=document.querySelector('.overlay form');
+addTask.addEventListener('click',()=>{
+  addTask.innerHTML = addTask.innerHTML === "Add Task" ? "Undo" : "Add Task";
+  addoverlay.classList.toggle('hidden');
+  addoverlay.classList.toggle('overlay');
+})
+form.addEventListener('submit',(e)=>{
+  e.preventDefault();
+})

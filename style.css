@@ -351,7 +351,46 @@ main .openBox .kanban-mid-wrapper {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
   gap: 1rem;
+}
+main .openBox .kanban-mid-wrapper .overlay {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+main .openBox .kanban-mid-wrapper .overlay form {
+  background-color: var(--trinityColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+main .openBox .kanban-mid-wrapper .overlay form input {
+  width: 300px;
+  height: 60px;
+  padding: 1rem;
+}
+main .openBox .kanban-mid-wrapper .overlay form textarea {
+  width: 300px;
+  height: 100px;
+  padding: 1rem;
+  resize: none;
+}
+main .openBox .kanban-mid-wrapper .overlay form button {
+  padding: 0.5rem;
+  font-size: var(--labelFontSize);
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  border: none;
+  font-family: boldFont;
 }
 main .openBox .kanban-mid-wrapper .box {
   min-width: 250px;
@@ -463,6 +502,10 @@ main .openBox .pomodomo-mid-wrapper .right button:hover {
 main .openBox .pomodomo-mid-wrapper .right button:active {
   scale: 0.9;
   opacity: 0.8;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (max-width: 900px) {

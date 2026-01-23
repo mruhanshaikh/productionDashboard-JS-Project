@@ -254,16 +254,48 @@ resetbtn.addEventListener('click',()=>{
 }
 pomodomoTimer();
 let todo = document.querySelector('.box1');
+let emptymsg = document.querySelector('.box1 p');
 let progress = document.querySelector('.box2');
 let done = document.querySelector('.box3');
 let addTask= document.querySelector('.addTask');
 let addoverlay = document.querySelector('.addoverlay');
-let form=document.querySelector('.overlay form');
+let taskform=document.getElementById('taskform');
+let input=document.querySelector('#taskform input');
+let textarea=document.querySelector('#taskform textarea');
+let submit=document.querySelector('#taskform button');
+let itemss=document.querySelector('.box .items')
+let items=JSON.parse(localStorage.getItem('item'))||[];
+if(items.length!==0){
+  render();
+  emptymsg.innerHTML=" ";
+}else{
+  emptymsg.innerHTML="Nothing Here Yet...";
+}
+
+
 addTask.addEventListener('click',()=>{
   addTask.innerHTML = addTask.innerHTML === "Add Task" ? "Undo" : "Add Task";
   addoverlay.classList.toggle('hidden');
   addoverlay.classList.toggle('overlay');
 })
-form.addEventListener('submit',(e)=>{
+taskform.addEventListener('submit',(e)=>{
   e.preventDefault();
+  items.push({
+    task:input.value,
+    desc:textarea.value
+  });
+  localStorage.setItem('item',JSON.stringify(items));
+  render();
+ taskform.reset();
 })
+function render(){
+let data='';
+items.forEach((e)=>{
+  data+=`<div class="item">
+              <h3>${e.task}</h3>  
+              <p>${e.desc}</p>
+              <button>Delete</button>
+            </div>  `;
+})
+itemss.innerHTML=data;
+}

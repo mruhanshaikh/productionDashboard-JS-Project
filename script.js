@@ -267,7 +267,7 @@ let itemss=document.querySelector('.box .items')
 let items=JSON.parse(localStorage.getItem('item'))||[];
 if(items.length!==0){
   render();
-  emptymsg.innerHTML=" ";
+  emptymsg.innerHTML="";
 }else{
   emptymsg.innerHTML="Nothing Here Yet...";
 }

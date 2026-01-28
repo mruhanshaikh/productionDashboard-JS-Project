@@ -264,15 +264,25 @@ let input=document.querySelector('#taskform input');
 let textarea=document.querySelector('#taskform textarea');
 let submit=document.querySelector('#taskform button');
 let itemss=document.querySelector('.box .items')
+let delbtn=document.querySelector('.delbtn');
 let items=JSON.parse(localStorage.getItem('item'))||[];
+function render(){
+let data=' ';
+items.forEach((e)=>{
+  data+=`<div class="item">
+              <h3>${e.task}</h3>  
+              <p>${e.desc}</p>
+              <button class="delbtn">Delete</button>
+            </div>  `;
+})
+itemss.innerHTML=data;
+}
 if(items.length!==0){
   render();
   emptymsg.innerHTML="";
 }else{
   emptymsg.innerHTML="Nothing Here Yet...";
 }
-
-
 addTask.addEventListener('click',()=>{
   addTask.innerHTML = addTask.innerHTML === "Add Task" ? "Undo" : "Add Task";
   addoverlay.classList.toggle('hidden');
@@ -288,14 +298,5 @@ taskform.addEventListener('submit',(e)=>{
   render();
  taskform.reset();
 })
-function render(){
-let data='';
-items.forEach((e)=>{
-  data+=`<div class="item">
-              <h3>${e.task}</h3>  
-              <p>${e.desc}</p>
-              <button>Delete</button>
-            </div>  `;
-})
-itemss.innerHTML=data;
-}
+
+console.log(delbtn);

@@ -385,6 +385,8 @@ main .openBox .kanban-mid-wrapper .overlay form textarea {
   resize: none;
 }
 main .openBox .kanban-mid-wrapper .overlay form button {
+  opacity: 0.5;
+  cursor: not-allowed;
   padding: 0.5rem;
   font-size: var(--labelFontSize);
   color: var(--primaryColor);
@@ -393,11 +395,10 @@ main .openBox .kanban-mid-wrapper .overlay form button {
   font-family: boldFont;
 }
 main .openBox .kanban-mid-wrapper .box {
+  height: 80svh;
   min-width: 250px;
   flex: 1;
   background-color: var(--trinityColor2);
-  height: 80svh;
-  overflow-y: scroll;
   padding: 0.5rem;
 }
 main .openBox .kanban-mid-wrapper .box .box-top {
@@ -413,6 +414,8 @@ main .openBox .kanban-mid-wrapper .box .box-top {
   margin-bottom: 0.5rem;
 }
 main .openBox .kanban-mid-wrapper .box .items {
+  height: 94%;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -427,6 +430,12 @@ main .openBox .kanban-mid-wrapper .box .items .item {
   width: 100%;
   background-color: var(--trinityColor);
   padding: 0.5rem;
+  text-transform: capitalize;
+}
+main .openBox .kanban-mid-wrapper .box .items .item p {
+  font-family: lightFont;
+  padding-top: 10px;
+  font-size: large;
 }
 main .openBox .kanban-mid-wrapper .box .items .item button {
   font-size: var(--labelFontSize);
@@ -436,6 +445,15 @@ main .openBox .kanban-mid-wrapper .box .items .item button {
   font-family: boldFont;
   align-self: flex-end;
   padding: 0.5rem;
+  transition: all 0.5s ease;
+}
+main .openBox .kanban-mid-wrapper .box .items .item button:hover {
+  scale: 1.1;
+  opacity: 0.7;
+}
+main .openBox .kanban-mid-wrapper .box .items .item button:active {
+  scale: 1.1;
+  opacity: 0.7;
 }
 main .openBox .pomodomo-mid-wrapper {
   width: 100%;

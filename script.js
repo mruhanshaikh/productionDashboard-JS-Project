@@ -253,7 +253,11 @@ resetbtn.addEventListener('click',()=>{
 });
 }
 pomodomoTimer();
+let common= document.querySelectorAll('.kanban-mid-wrapper .box .items');
 let todo = document.querySelector('.box1');
+let totaltask = document.querySelector('.box1 .box-top span');
+let totalprocess = document.querySelector('.box2 .box-top span');
+let totaldone = document.querySelector('.box3 .box-top span');
 let emptymsg = document.querySelector('.box1 p');
 let progress = document.querySelector('.box2');
 let done = document.querySelector('.box3');
@@ -263,26 +267,72 @@ let taskform=document.getElementById('taskform');
 let input=document.querySelector('#taskform input');
 let textarea=document.querySelector('#taskform textarea');
 let submit=document.querySelector('#taskform button');
-let itemss=document.querySelector('.box .items')
-let delbtn=document.querySelector('.delbtn');
+let itemss=document.querySelector('.box .items');
+let left=document.querySelector('.box .left');
+let middel=document.querySelector('.box .middel');
+let right=document.querySelector('.box .right');
 let items=JSON.parse(localStorage.getItem('item'))||[];
+render();
+dragitems(); 
+submit.disabled=true;
 function render(){
-let data=' ';
-items.forEach((e)=>{
-  data+=`<div class="item">
+ if (items.length === 0) {
+    // emptymsg.innerHTML = "Nothing Here Yet...";
+    left.innerHTML = "Nothing Here Yet...";      // Clear left column
+    middel.innerHTML = "Nothing Here Yet...";    // Clear middle column
+    right.innerHTML = "Nothing Here Yet...";     // Clear right column
+    totaltask.textContent = 0;
+    totalprocess.textContent = 0;
+    totaldone.textContent = 0;
+    return;
+  }
+  const todoCount = items.filter(item => item.column === 'left').length;
+  const inprogressCount = items.filter(item => item.column === 'middel').length;
+  const doneCount = items.filter(item => item.column === 'right').length;
+  
+  totaltask.textContent = `${todoCount}`;
+  totalprocess.textContent = `${inprogressCount}`;
+  totaldone.textContent = `${doneCount}`;
+
+  emptymsg.innerHTML = "";
+
+  left.innerHTML = '';
+  middel.innerHTML = '';
+  right.innerHTML = '';
+
+items.forEach((e,id)=>{
+  const taskHTML =`<div class="item" draggable="true" data-index="${id}">
               <h3>${e.task}</h3>  
               <p>${e.desc}</p>
-              <button class="delbtn">Delete</button>
+              <button id=${id} class="delbtn">Delete</button>
             </div>  `;
-})
-itemss.innerHTML=data;
+      if (e.column === 'left') {
+      left.innerHTML += taskHTML;
+    } else if (e.column === 'middel') {
+      middel.innerHTML += taskHTML;
+    } else if (e.column === 'right') {
+      right.innerHTML += taskHTML;
+    } else {
+      // If no column is saved (old data), put in left by default
+      left.innerHTML += taskHTML;
+    }
+});
 }
-if(items.length!==0){
-  render();
-  emptymsg.innerHTML="";
-}else{
-  emptymsg.innerHTML="Nothing Here Yet...";
+function validateForm(){
+  const title = input.value.trim();
+  const desc = textarea.value.trim();
+  if(title && desc){
+    submit.style.opacity=1;
+    submit.style.cursor='pointer';
+    submit.disabled=false;
+  }else{
+    submit.style.opacity=0.5;
+    submit.style.cursor='not-allowed';
+    submit.disabled=true;
+  }
 }
+input.addEventListener('input',validateForm);
+textarea.addEventListener('input',validateForm);
 addTask.addEventListener('click',()=>{
   addTask.innerHTML = addTask.innerHTML === "Add Task" ? "Undo" : "Add Task";
   addoverlay.classList.toggle('hidden');
@@ -292,11 +342,62 @@ taskform.addEventListener('submit',(e)=>{
   e.preventDefault();
   items.push({
     task:input.value,
-    desc:textarea.value
+    desc:textarea.value,
+    column: 'left'
   });
   localStorage.setItem('item',JSON.stringify(items));
   render();
- taskform.reset();
-})
+  dragitems(); 
+  taskform.reset();
+  validateForm();
+  addTask.innerHTML = addTask.innerHTML === "Add Task" ? "Undo" : "Add Task";
+  addoverlay.classList.toggle('hidden');
+  addoverlay.classList.toggle('overlay');
+});
+  common.forEach((e)=>{
+    e.addEventListener('click',(e)=>{
+    if(!e.target.classList.contains('delbtn')) return;
+    let index = e.target.id;
+    let isdelete = confirm(" Do You Really Want to Delete ?");
+    if(isdelete){
+      items.splice(index,1);  
+    }
+    localStorage.setItem('item',JSON.stringify(items));
+    render();
+    dragitems();
+  })
+  })
+let selectedItem = null;
+function dragitems() {
+  document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('dragstart', (e) => {
+      selectedItem = e.currentTarget;
+    });
 
-console.log(delbtn);
+    item.addEventListener('dragend', () => {
+      selectedItem = null;
+    });
+  }); 
+}
+function dropitem(container,columnName) {
+  container.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+
+  container.addEventListener('drop', () => {
+    if (selectedItem) {
+      container.appendChild(selectedItem);
+      const taskIndex = selectedItem.getAttribute('data-index'); 
+      if (taskIndex !== null) {
+        items[taskIndex].column = columnName;
+        localStorage.setItem('item', JSON.stringify(items));
+        render();
+        dragitems();
+      }
+    }
+  });
+}
+dropitem(left, 'left');     
+dropitem(middel, 'middel');  
+dropitem(right, 'right');    
+

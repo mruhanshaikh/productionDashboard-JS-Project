@@ -253,6 +253,7 @@ resetbtn.addEventListener('click',()=>{
 });
 }
 pomodomoTimer();
+function kanbanBoard(){
 let common= document.querySelectorAll('.kanban-mid-wrapper .box .items');
 let todo = document.querySelector('.box1');
 let totaltask = document.querySelector('.box1 .box-top span');
@@ -294,7 +295,7 @@ function render(){
   totalprocess.textContent = `${inprogressCount}`;
   totaldone.textContent = `${doneCount}`;
 
-  emptymsg.innerHTML = "";
+  // emptymsg.innerHTML = "";
 
   left.innerHTML = '';
   middel.innerHTML = '';
@@ -399,5 +400,9 @@ function dropitem(container,columnName) {
 }
 dropitem(left, 'left');     
 dropitem(middel, 'middel');  
-dropitem(right, 'right');    
-
+dropitem(right, 'right'); 
+}
+kanbanBoard();  
+function homepage2(){
+  
+}

@@ -406,3 +406,4 @@ kanbanBoard();
 function homepage2(){
   
 }
+honepage2();

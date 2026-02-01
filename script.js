@@ -403,7 +403,7 @@ dropitem(middel, 'middel');
 dropitem(right, 'right'); 
 }
 kanbanBoard();  
-function homepage2(){
+function homepage3(){
   
 }
-honepage2();
+honepage3();

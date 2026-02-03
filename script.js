@@ -4,6 +4,43 @@ function homePage() {
   let showcase = document.querySelector(".showcase");
   let close = document.querySelectorAll(".close");
   let mq=document.querySelector('.mq-sec');
+  let dtw=document.querySelector('.daytimewheater-sec');
+  const url =`https://picsum.photos/1920/1080?random=${Date.now()}`;
+  dtw.style.backgroundImage=`url(${url})`;
+  function render(e){
+  let date = new Date();
+  const hr=date.getHours();
+  const min=date.getMinutes();
+  const day=date.getDay()+1;
+  const month=date.getMonth()+1;
+  dtw.innerHTML=` <div class="left">
+          <time class="datetime">
+            <span class="time">${hr}:${min}</span>
+            <span class="date">Tuesday, ${day} ${month} 2025</span>
+          </time>
+          <address class="location">${e.location.name}, ${e.location.region}, ${e.location.country}</address>
+        </div>
+        <div class="right">
+          <div class="weather-main">
+            <span class="temperature">${e.current.temp_c}°C</span>
+            <span class="condition">Light Rain</span>
+          </div>
+          <ul class="weather-details">
+            <li>
+              <span class="label">Humidity</span>
+              <span class="value">${e.current.humidity}%</span>
+            </li>
+            <li>
+              <span class="label">Precipitation</span>
+              <span class="value">20%</span>
+            </li>
+            <li>
+              <span class="label">Wind</span>
+              <span class="value">${e.current.wind_kph} km/h</span>
+            </li>
+          </ul>
+        </div>`
+  }
   let x;
   allbox.forEach((elem) => {
     elem.addEventListener("click", (e) => {
@@ -20,6 +57,15 @@ function homePage() {
       x.style.display = "none";
     });
   });
+  const apikey="2290f8ce5c7a467b93f74700260302";
+  const cityname="kolkata";
+  async function wheatherAPI() {
+    let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cityname}`);
+    let data=await response.json();
+    console.log(data);
+    render(data);
+  }
+  wheatherAPI();
 }
 homePage(); 
 function todoPage(){
@@ -403,7 +449,3 @@ dropitem(middel, 'middel');
 dropitem(right, 'right'); 
 }
 kanbanBoard();  
-function homepage2(){
-  
-}
-honepage2();

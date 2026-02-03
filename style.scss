@@ -24,9 +24,59 @@ main {
   @include flex(column, flex-start, flex-start);
   position: relative;
   flex-wrap: wrap;
+  .daytimewheater-sec{
+  background-size: cover;
+  background-position:center;
+  background-repeat: no-repeat;
+  width:100%;
+  min-height:30svh;
+  position: relative;
+  background-color:var(--secondaryColor);
+  @include flex(row,space-between,center);
+  padding:0 1rem;
+    &::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color:rgba(27, 60, 83, 0.4); /* blue tint */
+}
+  .left{
+      color:var(--primaryColor);  
+      backdrop-filter:blur(3px);
+      font-size:var(--subHeadingFontSize);
+    .datetime{
+      @include flex(column, flex-start, flex-start);
+      .date{
+        font-family:boldFont;
+      }
+    }
+    .location{
+      font-style: normal;
+      }
+  }
+  .right{
+    @include flex(column,center,flex-start);
+    gap:1rem;
+    color:var(--primaryColor);
+    backdrop-filter:blur(3px);
+    .weather-main{
+       @include flex(column,center,flex-start);
+       font-size:var(--subHeadingFontSize);
+      .temperature{
+        font-family:boldFont;
+      }
+    }
+    .weather-details{
+      li{
+        list-style:none;
+        font-family:lightFont;
+      }
+    }
+  }
+  }
   .showcase {
     width: 100%;
-    min-height: 80svh;
+    min-height: 50svh;
     @include flex(row, flex-start, flex-start);
     gap: 1rem;
     padding: 2rem;
@@ -83,7 +133,7 @@ main {
     padding: 1rem;
   }
   .quote-box {
-    width: auto;
+    width: 100%;
     color: var(--primaryColor);
     text-align: center;
     font-size: var(--subHeadingFontSize);
@@ -258,7 +308,7 @@ main {
       gap: 1rem;
       border-radius: 1rem;
       padding: 1rem;
-      height: 70svh;
+      height: 80svh;
       overflow-y: scroll;
       .wrapper {
         width: 48%;
@@ -473,9 +523,27 @@ main {
         }
       }
     }
+    .task-mid-wrapper{
+      height:71svh !important;
+    }
   }
 }
 @media (max-width: 500px) {
+  .daytimewheater-sec{
+   flex-direction: column!important;
+   justify-content:space-between !important;
+   align-items:flex-start!important;
+   padding-top:0.5rem!important;
+   padding-bottom:0.5rem!important;
+   .right{
+    gap: 0.5rem !important;
+    .weather-details{
+      display:flex;
+      flex-direction:row!important;
+      gap:10px;
+    }
+   }
+  }
   .openBox {
     .task-mid-wrapper {
       .wrapper {

@@ -57,9 +57,71 @@ main {
   position: relative;
   flex-wrap: wrap;
 }
+main .daytimewheater-sec {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 30svh;
+  position: relative;
+  background-color: var(--secondaryColor);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+main .daytimewheater-sec::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(27, 60, 83, 0.4); /* blue tint */
+}
+main .daytimewheater-sec .left {
+  color: var(--primaryColor);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  font-size: var(--subHeadingFontSize);
+}
+main .daytimewheater-sec .left .datetime {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+main .daytimewheater-sec .left .datetime .date {
+  font-family: boldFont;
+}
+main .daytimewheater-sec .left .location {
+  font-style: normal;
+}
+main .daytimewheater-sec .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  color: var(--primaryColor);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+main .daytimewheater-sec .right .weather-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: var(--subHeadingFontSize);
+}
+main .daytimewheater-sec .right .weather-main .temperature {
+  font-family: boldFont;
+}
+main .daytimewheater-sec .right .weather-details li {
+  list-style: none;
+  font-family: lightFont;
+}
 main .showcase {
   width: 100%;
-  min-height: 80svh;
+  min-height: 50svh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -123,7 +185,7 @@ main .mq-sec {
   padding: 1rem;
 }
 main .quote-box {
-  width: auto;
+  width: 100%;
   color: var(--primaryColor);
   text-align: center;
   font-size: var(--subHeadingFontSize);
@@ -313,7 +375,7 @@ main .openBox .task-mid-wrapper {
   gap: 1rem;
   border-radius: 1rem;
   padding: 1rem;
-  height: 70svh;
+  height: 80svh;
   overflow-y: scroll;
 }
 main .openBox .task-mid-wrapper .wrapper {
@@ -540,8 +602,26 @@ main .openBox .pomodomo-mid-wrapper .right button:active {
   .openBox .todo-mid-wrapper .box2 .todo-items li :nth-child(2) :nth-child(2) {
     margin-left: 0 !important;
   }
+  .openBox .task-mid-wrapper {
+    height: 71svh !important;
+  }
 }
 @media (max-width: 500px) {
+  .daytimewheater-sec {
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .daytimewheater-sec .right {
+    gap: 0.5rem !important;
+  }
+  .daytimewheater-sec .right .weather-details {
+    display: flex;
+    flex-direction: row !important;
+    gap: 10px;
+  }
   .openBox .task-mid-wrapper .wrapper {
     width: 100% !important;
   }

@@ -79,9 +79,13 @@ main .daytimewheater-sec::before {
 }
 main .daytimewheater-sec .left {
   color: var(--primaryColor);
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
   font-size: var(--subHeadingFontSize);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 main .daytimewheater-sec .left .datetime {
   display: flex;
@@ -100,10 +104,9 @@ main .daytimewheater-sec .right {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem;
   color: var(--primaryColor);
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
 }
 main .daytimewheater-sec .right .weather-main {
   display: flex;
@@ -114,6 +117,15 @@ main .daytimewheater-sec .right .weather-main {
 }
 main .daytimewheater-sec .right .weather-main .temperature {
   font-family: boldFont;
+}
+main .daytimewheater-sec .right .weather-main .condition {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+main .daytimewheater-sec .right .weather-main .condition img {
+  width: 3rem;
 }
 main .daytimewheater-sec .right .weather-details li {
   list-style: none;
@@ -613,6 +625,7 @@ main .openBox .pomodomo-mid-wrapper .right button:active {
     align-items: flex-start !important;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
+    gap: 1rem;
   }
   .daytimewheater-sec .right {
     gap: 0.5rem !important;

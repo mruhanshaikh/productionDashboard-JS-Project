@@ -5,25 +5,37 @@ function homePage() {
   let close = document.querySelectorAll(".close");
   let mq=document.querySelector('.mq-sec');
   let dtw=document.querySelector('.daytimewheater-sec');
+  let dtwleft=document.querySelector('.daytimewheater-sec .left');
+  let dtwright=document.querySelector('.daytimewheater-sec .right');
   const url =`https://picsum.photos/1920/1080?random=${Date.now()}`;
   dtw.style.backgroundImage=`url(${url})`;
+  let clockInterval;
   function render(e){
-  let date = new Date();
-  const hr=date.getHours();
-  const min=date.getMinutes();
-  const day=date.getDay()+1;
-  const month=date.getMonth()+1;
-  dtw.innerHTML=` <div class="left">
+  if(clockInterval)clearInterval(clockInterval);
+  let date=new Date(e.location.localtime_epoch*1000);
+  let dayname=date.toLocaleDateString('en-US',{
+    weekday:"long"
+  });
+  let monthname=date.toLocaleDateString('en-US',{
+    month:"long"
+  });
+  let initime=date.toLocaleTimeString('en-US',{
+        hour:'numeric',
+         minute:'2-digit'
+        });
+  let day=date.getDate();
+  let year=date.getFullYear();
+  dtwleft.innerHTML=`
           <time class="datetime">
-            <span class="time">${hr}:${min}</span>
-            <span class="date">Tuesday, ${day} ${month} 2025</span>
+            <span class="time">${initime}</span>
+            <span class="date">${dayname}, ${day} ${monthname} ${year}</span>
           </time>
           <address class="location">${e.location.name}, ${e.location.region}, ${e.location.country}</address>
-        </div>
-        <div class="right">
+        </div>`
+  dtwright.innerHTML=`
           <div class="weather-main">
             <span class="temperature">${e.current.temp_c}°C</span>
-            <span class="condition">Light Rain</span>
+            <span class="condition">${e.current.condition.text}<img src="${e.current.condition.icon}" alt="wheater icon" class="wheater-icon"></span>
           </div>
           <ul class="weather-details">
             <li>
@@ -31,20 +43,26 @@ function homePage() {
               <span class="value">${e.current.humidity}%</span>
             </li>
             <li>
-              <span class="label">Precipitation</span>
-              <span class="value">20%</span>
-            </li>
-            <li>
               <span class="label">Wind</span>
               <span class="value">${e.current.wind_kph} km/h</span>
             </li>
           </ul>
         </div>`
+        let time=document.querySelector('.datetime .time');
+        clockInterval=setInterval(()=>{
+        date.setSeconds(date.getSeconds()+1);
+        time.textContent=date.toLocaleTimeString('en-US',{
+        hour:'numeric',
+         minute:'2-digit'
+        });
+  },1000);
   }
   let x;
   allbox.forEach((elem) => {
     elem.addEventListener("click", (e) => {
       showcase.style.display = "none";
+      dtwleft.style.display="none";
+      dtwright.style.display="none";
       mq.style.display="none";
       x = allopenbox[e.target.id];
       x.style.display = "block";
@@ -53,12 +71,14 @@ function homePage() {
   close.forEach((e) => {
     e.addEventListener("click", () => {
       showcase.style.display = "flex";
+      dtwleft.style.display="flex";
+      dtwright.style.display="flex";
       mq.style.display="flex";
       x.style.display = "none";
     });
   });
   const apikey="2290f8ce5c7a467b93f74700260302";
-  const cityname="kolkata";
+  const cityname="texas";
   async function wheatherAPI() {
     let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cityname}`);
     let data=await response.json();

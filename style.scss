@@ -42,8 +42,9 @@ main {
 }
   .left{
       color:var(--primaryColor);  
-      backdrop-filter:blur(3px);
+      backdrop-filter:blur(1px);
       font-size:var(--subHeadingFontSize);
+      @include flex(column, flex-start, flex-start);
     .datetime{
       @include flex(column, flex-start, flex-start);
       .date{
@@ -56,14 +57,19 @@ main {
   }
   .right{
     @include flex(column,center,flex-start);
-    gap:1rem;
     color:var(--primaryColor);
-    backdrop-filter:blur(3px);
+    backdrop-filter:blur(1px);
     .weather-main{
        @include flex(column,center,flex-start);
        font-size:var(--subHeadingFontSize);
       .temperature{
         font-family:boldFont;
+      }
+      .condition{
+        @include flex(row,flex-start,center);
+        img{
+         width:3rem;
+        }
       }
     }
     .weather-details{
@@ -535,6 +541,7 @@ main {
    align-items:flex-start!important;
    padding-top:0.5rem!important;
    padding-bottom:0.5rem!important;
+   gap:1rem;
    .right{
     gap: 0.5rem !important;
     .weather-details{

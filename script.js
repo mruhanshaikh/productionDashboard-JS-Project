@@ -9,6 +9,7 @@ function homePage() {
   let dtwright=document.querySelector('.daytimewheater-sec .right');
   const url =`https://picsum.photos/1920/1080?random=${Date.now()}`;
   dtw.style.backgroundImage=`url(${url})`;
+
   let clockInterval;
   function render(e){
   if(clockInterval)clearInterval(clockInterval);
@@ -78,14 +79,28 @@ function homePage() {
     });
   });
   const apikey="2290f8ce5c7a467b93f74700260302";
-  const cityname="texas";
-  async function wheatherAPI() {
-    let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cityname}`);
-    let data=await response.json();
-    console.log(data);
-    render(data);
+  window.navigator.geolocation.getCurrentPosition(
+    async(e)=>{
+     let longitude=e.coords.longitude;
+     let latitude=e.coords.latitude;
+     await wheatherAPI(latitude,longitude);
+    },
+    (error)=>{
+      console.error(error.message);
+    }
+  )
+  async function wheatherAPI(lati,longi) {
+    try{
+      let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lati},${longi}`);
+      if(!response.ok){
+      throw new Error("bad request");
+      } 
+      let data=await response.json();
+      render(data);
+    }catch (error){
+      console.log(error);
+    }
   }
-  wheatherAPI();
 }
 homePage(); 
 function todoPage(){

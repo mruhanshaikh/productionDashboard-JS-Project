@@ -11,9 +11,11 @@ function homePage() {
   dtw.style.backgroundImage=`url(${url})`;
 
   let clockInterval;
+  let date;
   function render(e){
   if(clockInterval)clearInterval(clockInterval);
-  let date=new Date(e.location.localtime_epoch*1000);
+  // let date=new Date(e.location.localtime_epoch*1000);
+     date=new Date(Date.now());
   let dayname=date.toLocaleDateString('en-US',{
     weekday:"long"
   });
@@ -21,6 +23,7 @@ function homePage() {
     month:"long"
   });
   let initime=date.toLocaleTimeString('en-US',{
+        timeZone:e.location.tz_id,
         hour:'numeric',
          minute:'2-digit'
         });
@@ -51,8 +54,10 @@ function homePage() {
         </div>`
         let time=document.querySelector('.datetime .time');
         clockInterval=setInterval(()=>{
-        date.setSeconds(date.getSeconds()+1);
+        // date.setSeconds(date.getSeconds()+1);
+         date = new Date(date.getTime() + 1000);
         time.textContent=date.toLocaleTimeString('en-US',{
+        timeZone:e.location.tz_id,
         hour:'numeric',
          minute:'2-digit'
         });
@@ -79,6 +84,7 @@ function homePage() {
     });
   });
   const apikey="2290f8ce5c7a467b93f74700260302";
+  // const city="dubai";
   window.navigator.geolocation.getCurrentPosition(
     async(e)=>{
      let longitude=e.coords.longitude;
@@ -89,18 +95,20 @@ function homePage() {
       console.error(error.message);
     }
   )
-  async function wheatherAPI(lati,longi) {
+  async function wheatherAPI(lat,lon) {
     try{
-      let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lati},${longi}`);
+      let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}`);
       if(!response.ok){
       throw new Error("bad request");
       } 
       let data=await response.json();
       render(data);
+      console.log(data.location.tz_id);
     }catch (error){
       console.log(error);
     }
   }
+  wheatherAPI();
 }
 homePage(); 
 function todoPage(){

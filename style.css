@@ -57,6 +57,16 @@ main {
   position: relative;
   flex-wrap: wrap;
 }
+main .nav {
+  min-height: 10svh;
+  width: 100%;
+  padding: 0 1rem;
+  background: linear-gradient(to bottom, var(--trinityColor2), var(--trinityColor));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 main .daytimewheater-sec {
   background-size: cover;
   background-position: center;
@@ -133,7 +143,7 @@ main .daytimewheater-sec .right .weather-details li {
 }
 main .showcase {
   width: 100%;
-  min-height: 50svh;
+  min-height: 40svh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

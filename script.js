@@ -92,7 +92,7 @@ function homePage() {
      await wheatherAPI(latitude,longitude);
     },
     (error)=>{
-      console.error(error.message);
+      console.error(error.message); 
     }
   )
   async function wheatherAPI(lat,lon) {

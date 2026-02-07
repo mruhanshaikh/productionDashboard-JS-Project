@@ -24,6 +24,17 @@ main {
   @include flex(column, flex-start, flex-start);
   position: relative;
   flex-wrap: wrap;
+  .nav{
+    min-height:10svh;
+    width:100%;
+    padding:0 1rem;
+     background: linear-gradient(
+      to bottom,
+      var(--trinityColor2),
+      var(--trinityColor)
+    );
+    @include flex(row,space-between,center);
+  }
   .daytimewheater-sec{
   background-size: cover;
   background-position:center;
@@ -82,7 +93,7 @@ main {
   }
   .showcase {
     width: 100%;
-    min-height: 50svh;
+    min-height: 40svh;
     @include flex(row, flex-start, flex-start);
     gap: 1rem;
     padding: 2rem;

@@ -233,6 +233,9 @@ main .showcase .fixedtheme {
 main .showcase .fixedtheme:hover {
   animation-play-state: paused;
 }
+main .showcase .fixedtheme:active {
+  animation-play-state: paused;
+}
 main .mq-sec {
   width: 100%;
   min-height: 20svh;

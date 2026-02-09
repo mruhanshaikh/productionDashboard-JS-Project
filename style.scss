@@ -173,6 +173,9 @@ main {
     &:hover{
       animation-play-state: paused;
     }
+    &:active{
+      animation-play-state: paused;
+    }
     }
   }
   .mq-sec {

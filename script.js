@@ -80,7 +80,7 @@ function homePage() {
     e.addEventListener("click", () => {
       showcase.style.display = "flex";
       dtwleft.style.display="flex";
-      dtwcenter.style.display="flex";
+      (dtwinnertext.innerHTML==="location is disabled")?dtwcenter.style.display="flex":dtwcenter.style.display="none";
       dtwright.style.display="flex";
       mq.style.display="flex";
       x.style.display = "none";

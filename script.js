@@ -7,6 +7,7 @@ function homePage() {
   let dtw=document.querySelector('.daytimewheater-sec');
   let dtwleft=document.querySelector('.daytimewheater-sec .left');
   let dtwcenter=document.querySelector('.daytimewheater-sec .center');
+  let dtwinnertext=document.querySelector('.daytimewheater-sec .center .fetch-btn');
   let dtwright=document.querySelector('.daytimewheater-sec .right');
   const url =`https://picsum.photos/1920/1080?random=${Date.now()}`;
   dtw.style.backgroundImage=`url(${url})`;
@@ -68,6 +69,7 @@ function homePage() {
     elem.addEventListener("click", (e) => {
       showcase.style.display = "none";
       dtwleft.style.display="none";
+      dtwcenter.style.display="none";
       dtwright.style.display="none";
       mq.style.display="none";
       x = allopenbox[e.target.id];
@@ -78,6 +80,7 @@ function homePage() {
     e.addEventListener("click", () => {
       showcase.style.display = "flex";
       dtwleft.style.display="flex";
+      dtwcenter.style.display="flex";
       dtwright.style.display="flex";
       mq.style.display="flex";
       x.style.display = "none";
@@ -91,12 +94,13 @@ function homePage() {
      let longitude=e.coords.longitude;
      let latitude=e.coords.latitude;
      await wheatherAPI(latitude,longitude);
+     dtwcenter.style.display="none";
     },
     (error)=>{
+      dtwinnertext.innerHTML="location is disabled"
       console.error(error.message); 
     }
   )
-  dtwcenter.style.display="none";
   })
   async function wheatherAPI(lat,lon) {
     try{

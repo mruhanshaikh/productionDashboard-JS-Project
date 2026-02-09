@@ -104,7 +104,7 @@ function homePage() {
   })
   async function wheatherAPI(lat,lon) {
     try{
-      let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}`);
+      let response=await fetch(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}`);
       if(!response.ok){
       throw new Error("bad request");
       } 

@@ -24,17 +24,6 @@ main {
   @include flex(column, flex-start, flex-start);
   position: relative;
   flex-wrap: wrap;
-  .nav{
-    min-height:10svh;
-    width:100%;
-    padding:0 1rem;
-     background: linear-gradient(
-      to bottom,
-      var(--trinityColor2),
-      var(--trinityColor)
-    );
-    @include flex(row,space-between,center);
-  }
   .daytimewheater-sec{
   background-size: cover;
   background-position:center;
@@ -66,6 +55,30 @@ main {
       font-style: normal;
       }
   }
+  .center{
+    // display:none;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%)!important;
+    .fetch-btn{
+       cursor: pointer;
+        text-transform: capitalize;
+        color: var(--primaryColor);
+        background-color: var(--secondaryColor);
+        font-size: var(--butFontSize);
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        font-family: boldFont;
+        scale:1;
+        transition: all 0.3s ease;
+         &:hover{
+        scale:1.1;
+        opacity:0.9;
+    }
+    }
+  }
   .right{
     @include flex(column,center,flex-start);
     color:var(--primaryColor);
@@ -93,8 +106,8 @@ main {
   }
   .showcase {
     width: 100%;
-    min-height: 40svh;
-    @include flex(row, flex-start, flex-start);
+    min-height: 50svh;
+    @include flex(row, flex-start, center);
     gap: 1rem;
     padding: 2rem;
     flex-wrap: wrap;
@@ -553,7 +566,14 @@ main {
    padding-top:0.5rem!important;
    padding-bottom:0.5rem!important;
    gap:1rem;
+  //  .left{
+  //   display:none !important;
+  //  }
+  // .center{
+  //   display: flex !important;;
+  //  }
    .right{
+    // display: none !important;;
     gap: 0.5rem !important;
     .weather-details{
       display:flex;

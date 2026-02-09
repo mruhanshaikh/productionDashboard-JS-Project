@@ -57,16 +57,6 @@ main {
   position: relative;
   flex-wrap: wrap;
 }
-main .nav {
-  min-height: 10svh;
-  width: 100%;
-  padding: 0 1rem;
-  background: linear-gradient(to bottom, var(--trinityColor2), var(--trinityColor));
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
 main .daytimewheater-sec {
   background-size: cover;
   background-position: center;
@@ -109,6 +99,29 @@ main .daytimewheater-sec .left .datetime .date {
 main .daytimewheater-sec .left .location {
   font-style: normal;
 }
+main .daytimewheater-sec .center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) !important;
+}
+main .daytimewheater-sec .center .fetch-btn {
+  cursor: pointer;
+  text-transform: capitalize;
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  font-size: var(--butFontSize);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-family: boldFont;
+  scale: 1;
+  transition: all 0.3s ease;
+}
+main .daytimewheater-sec .center .fetch-btn:hover {
+  scale: 1.1;
+  opacity: 0.9;
+}
 main .daytimewheater-sec .right {
   display: flex;
   flex-direction: column;
@@ -143,11 +156,11 @@ main .daytimewheater-sec .right .weather-details li {
 }
 main .showcase {
   width: 100%;
-  min-height: 40svh;
+  min-height: 50svh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   padding: 2rem;
   flex-wrap: wrap;

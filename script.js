@@ -6,10 +6,10 @@ function homePage() {
   let mq=document.querySelector('.mq-sec');
   let dtw=document.querySelector('.daytimewheater-sec');
   let dtwleft=document.querySelector('.daytimewheater-sec .left');
+  let dtwcenter=document.querySelector('.daytimewheater-sec .center');
   let dtwright=document.querySelector('.daytimewheater-sec .right');
   const url =`https://picsum.photos/1920/1080?random=${Date.now()}`;
   dtw.style.backgroundImage=`url(${url})`;
-
   let clockInterval;
   let date;
   function render(e){
@@ -85,7 +85,8 @@ function homePage() {
   });
   const apikey="2290f8ce5c7a467b93f74700260302";
   // const city="dubai";
-  window.navigator.geolocation.getCurrentPosition(
+  dtwcenter.addEventListener('click',()=>{
+    window.navigator.geolocation.getCurrentPosition(
     async(e)=>{
      let longitude=e.coords.longitude;
      let latitude=e.coords.latitude;
@@ -95,6 +96,8 @@ function homePage() {
       console.error(error.message); 
     }
   )
+  dtwcenter.style.display="none";
+  })
   async function wheatherAPI(lat,lon) {
     try{
       let response=await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${lat},${lon}`);
@@ -108,7 +111,6 @@ function homePage() {
       console.log(error);
     }
   }
-  wheatherAPI();
 }
 homePage(); 
 function todoPage(){

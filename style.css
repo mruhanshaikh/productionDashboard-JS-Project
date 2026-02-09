@@ -164,6 +164,7 @@ main .showcase {
   gap: 1rem;
   padding: 2rem;
   flex-wrap: wrap;
+  position: relative;
 }
 main .showcase:has(.box:hover) .box {
   scale: 0.9;
@@ -208,6 +209,29 @@ main .showcase .box span {
   font-size: var(--labelFontSize);
   text-transform: capitalize;
   pointer-events: none;
+}
+@keyframes theme {
+  from {
+    bottom: 0%;
+  }
+  to {
+    bottom: 90%;
+  }
+}
+main .showcase .fixedtheme {
+  position: absolute;
+  animation: theme linear 4s alternate infinite;
+  right: -1%;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: url(assets/gif\ artist\ circle\ GIF\ by\ Erica\ Anderson.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .showcase .fixedtheme:hover {
+  animation-play-state: paused;
 }
 main .mq-sec {
   width: 100%;

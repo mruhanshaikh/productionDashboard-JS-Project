@@ -13,6 +13,7 @@ function homePage() {
   dtw.style.backgroundImage=`url(${url})`;
   let clockInterval;
   let date;
+  let isclicked=false;
   function render(e){
   if(clockInterval)clearInterval(clockInterval);
   // let date=new Date(e.location.localtime_epoch*1000);
@@ -80,7 +81,7 @@ function homePage() {
     e.addEventListener("click", () => {
       showcase.style.display = "flex";
       dtwleft.style.display="flex";
-      (dtwinnertext.innerHTML==="location is disabled")?dtwcenter.style.display="flex":dtwcenter.style.display="none";
+      (!isclicked)?dtwcenter.style.display="flex":dtwcenter.style.display="none";
       dtwright.style.display="flex";
       mq.style.display="flex";
       x.style.display = "none";
@@ -95,6 +96,7 @@ function homePage() {
      let latitude=e.coords.latitude;
      await wheatherAPI(latitude,longitude);
      dtwcenter.style.display="none";
+     isclicked=true;
     },
     (error)=>{
       dtwinnertext.innerHTML="location is disabled"

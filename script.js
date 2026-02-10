@@ -92,9 +92,9 @@ function homePage() {
   const apikey="2290f8ce5c7a467b93f74700260302";
   // const city="dubai";
   dtwcenter.addEventListener('click',()=>{
+    dtwinnertext.innerHTML="Fetching Data..."
     window.navigator.geolocation.getCurrentPosition(
     async(e)=>{
-     dtwinnertext.innerHTML="Fetching Data..."
      let longitude=e.coords.longitude;
      let latitude=e.coords.latitude;
      await wheatherAPI(latitude,longitude);

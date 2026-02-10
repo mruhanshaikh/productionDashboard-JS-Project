@@ -94,6 +94,7 @@ function homePage() {
   dtwcenter.addEventListener('click',()=>{
     window.navigator.geolocation.getCurrentPosition(
     async(e)=>{
+     dtwinnertext.innerHTML="Fetching Data..."
      let longitude=e.coords.longitude;
      let latitude=e.coords.latitude;
      await wheatherAPI(latitude,longitude);

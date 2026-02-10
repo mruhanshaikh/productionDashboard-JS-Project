@@ -2,6 +2,7 @@ function homePage() {
   let allbox = document.querySelectorAll(".showcase .box");
   let allopenbox = document.querySelectorAll(".openBox");
   let showcase = document.querySelector(".showcase");
+  let themebtn = document.querySelector(".showcase .fixedtheme");
   let close = document.querySelectorAll(".close");
   let mq=document.querySelector('.mq-sec');
   let dtw=document.querySelector('.daytimewheater-sec');
@@ -9,6 +10,7 @@ function homePage() {
   let dtwcenter=document.querySelector('.daytimewheater-sec .center');
   let dtwinnertext=document.querySelector('.daytimewheater-sec .center .fetch-btn');
   let dtwright=document.querySelector('.daytimewheater-sec .right');
+  const root = document.documentElement;// this is html
   const url =`https://picsum.photos/1920/1080?random=${Date.now()}`;
   dtw.style.backgroundImage=`url(${url})`;
   let clockInterval;
@@ -117,6 +119,28 @@ function homePage() {
       console.log(error);
     }
   }
+  let prefTheme=localStorage.getItem("theme");
+  if (prefTheme === "light") {
+    root.removeAttribute("data-theme");
+  } else {
+    root.setAttribute("data-theme",prefTheme);
+  }
+
+  const themes = ["light", "dark", "forest", "sunset", "midnight"];
+  let currentThemeIndex = 0;
+  function applyTheme(index) {
+  const theme = themes[index];
+  localStorage.setItem("theme",theme);
+  if (theme === "light") {
+    root.removeAttribute("data-theme");
+  } else {
+    root.setAttribute("data-theme", theme);
+  }
+}
+  themebtn.addEventListener('click',()=>{
+  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+  applyTheme(currentThemeIndex);
+  })
 }
 homePage(); 
 function todoPage(){

@@ -21,6 +21,40 @@
     --headingFontSize:clamp(2rem, 1.5rem + 3vw, 3.5rem);
     --bodyFontSize:clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);;
 }
+$themes: (
+  dark: (
+    primaryColor: #7EACB5,
+    secondaryColor: #FFF4EA,
+    trinityColor: #EDDCC6,
+    trinityColor2: #BF4646
+  ),
+  forest: (
+    primaryColor: #EBF4F6,
+    secondaryColor: #7AB2B2,
+    trinityColor: #7AB2B2,
+    trinityColor2: #09637E
+  ),
+  sunset: (
+    primaryColor: #562F00,
+    secondaryColor: #FF9644,
+    trinityColor: #FFCE99,
+    trinityColor2: #FFFDF1
+  ),
+  midnight: (
+    primaryColor: #FA8112,
+    secondaryColor: #222222,
+    trinityColor: #F5E7C6,
+    trinityColor2: #FAF3E1
+  )
+);
+@each $name, $colors in $themes {
+  [data-theme="#{$name}"] {
+    @each $key, $value in $colors {
+      --#{$key}: #{$value};
+    }
+  }
+}
+
 @mixin flex($direction,$justify,$align){
     display: flex;
     flex-direction:$direction;

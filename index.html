@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FocusBoard  All-in-One Productivity Dashboard</title>
+    <title>FocusBoard - All-in-One Productivity Dashboard</title>
     <meta
     name="description"
     content="FocusBoard is an all-in-one productivity dashboard with todo lists, Kanban boards, Pomodoro timer, daily planning, notes, weather, and motivation—built to help you stay focused every day."
@@ -157,7 +157,6 @@
               <textarea
                 required
                 name="desc"
-                name="desc"
                 id="desc"
                 placeholder="Enter Description"
               ></textarea>
@@ -218,6 +217,21 @@
           <h2>Store what you’ll need later</h2>
           <button class="close">close</button>
         </div>
+        <section class="goal-mid-wrapper">
+          <div class="top">
+            <input type="search" placeholder="search notes">
+            <span class="addnote"><i class="ri-add-large-fill"></i></span>
+          </div>
+            <div class="notes">
+            <div class="note">
+              <div class="bar">
+                 <input type="text"  class="notesname" name="nname" id="nname" placeholder="Title">
+                 <i class="ri-close-circle-fill"></i>
+              </div>
+              <textarea name="desc" class="notesdesc" id="ndesc" placeholder="Note"></textarea>
+            </div>
+            </div>
+        </section>
       </section>
     </main>
     <script src="script.js"></script>

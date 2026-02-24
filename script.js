@@ -525,3 +525,23 @@ dropitem(middel, 'middel');
 dropitem(right, 'right'); 
 }
 kanbanBoard();  
+function notes(){
+let addnote= document.querySelector('.ri-add-large-fill');
+let notesname= document.querySelectorAll('.notesnames');
+let notesdesc= document.querySelectorAll('.notesdesc');
+let notes = [];
+document.addEventListener("input",(e)=>{
+  if(!e.target.classList.contains('notesnames')||!e.target.classList.contains('notesdesc')){
+    let note={
+      name:e.target.value,
+      desc:e.target.value
+    }
+    notes.push(note);
+  }
+});
+addnote.addEventListener('click',(e)=>{
+  console.log(notes);
+  console.log(notes);
+})
+}
+notes();

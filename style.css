@@ -761,17 +761,17 @@ main .openBox .goal-mid-wrapper .notes .note .bar input::-moz-placeholder {
 main .openBox .goal-mid-wrapper .notes .note .bar input::placeholder {
   color: var(--primaryColor);
 }
-main .openBox .goal-mid-wrapper .notes .note .bar i {
+main .openBox .goal-mid-wrapper .notes .note .bar span i {
   position: absolute;
   right: 1%;
   transition: all ease 0.5s;
   cursor: pointer;
 }
-main .openBox .goal-mid-wrapper .notes .note .bar i:hover {
+main .openBox .goal-mid-wrapper .notes .note .bar span i:hover {
   scale: 1.1;
   color: var(--trinityColor2);
 }
-main .openBox .goal-mid-wrapper .notes .note .bar i:active {
+main .openBox .goal-mid-wrapper .notes .note .bar span i:active {
   scale: 1.1;
   color: var(--trinityColor2);
 }

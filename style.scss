@@ -617,7 +617,8 @@ main {
               color:var(--primaryColor);
             }
           }
-          i{
+          span{
+             i{
             position: absolute;
             right:1%;
             transition: all ease 0.5s;
@@ -630,6 +631,7 @@ main {
               scale:1.1;
               color:var(--trinityColor2);
             }
+          }
           }
           }
           textarea{

@@ -115,7 +115,6 @@ function homePage() {
       } 
       let data=await response.json();
       render(data);
-      console.log(data.location.tz_id);
     }catch (error){
       console.log(error);
     }
@@ -527,21 +526,63 @@ dropitem(right, 'right');
 kanbanBoard();  
 function notes(){
 let addnote= document.querySelector('.ri-add-large-fill');
-let notesname= document.querySelectorAll('.notesnames');
-let notesdesc= document.querySelectorAll('.notesdesc');
-let notes = [];
-document.addEventListener("input",(e)=>{
-  if(!e.target.classList.contains('notesnames')||!e.target.classList.contains('notesdesc')){
-    let note={
-      name:e.target.value,
-      desc:e.target.value
-    }
-    notes.push(note);
-  }
-});
+let notes=document.querySelector('.goal-mid-wrapper .notes')
+let searchbar=document.getElementById('searchbar');
+
+let notesArray=JSON.parse(localStorage.getItem('note'))||[];
+render();
+function save(){
+  localStorage.setItem('note',JSON.stringify(notesArray));
+}
 addnote.addEventListener('click',(e)=>{
-  console.log(notes);
-  console.log(notes);
+  const data={
+    id:Date.now(),
+    title:"",
+    note:""
+  }
+  notesArray.push(data);
+  save();
+  render();
+});
+function render(){
+let notedata="";
+notesArray.forEach((e,id)=>{
+notedata+=`<div class="note" id="${id}">
+              <div class="bar">
+                 <input type="text"  class="notesname" name="nname" value="${e.title}"  placeholder="Title">
+                 <span class="closenote" data-id="${id}"><i class="ri-close-circle-fill"></i></span>
+              </div>
+              <textarea name="desc" class="notesdesc" placeholder="Note">${e.note}</textarea>
+            </div>`
 })
+notes.innerHTML=notedata; 
+}
+notes.addEventListener('click',(e)=>{
+   const closeBtn = e.target.closest('.closenote');
+   if(closeBtn){
+    let index=closeBtn.dataset.id;
+    let x=confirm("Wanna Remove this note ??");
+    if(x){
+       notesArray.splice(index,1);
+    }
+    save();
+    render();
+   }
+})
+notes.addEventListener("input",(e)=>{
+  if(!e.target.matches(".notesname, .notesdesc"))return;
+  const noteDiv = e.target.closest(".note");
+  const index = noteDiv.id;
+  const noteObj = notesArray[index];
+  if (e.target.classList.contains("notesname")) {
+    let cleantitle=e.target.value.trim().replace(/\s+/g, ' ');
+    noteObj.title = cleantitle;
+  }
+  if (e.target.classList.contains("notesdesc")) {
+    let cleannote=e.target.value.trim().replace(/\s+/g, ' ');
+    noteObj.note = cleannote;
+  }
+  save();
+}); 
 }
 notes();

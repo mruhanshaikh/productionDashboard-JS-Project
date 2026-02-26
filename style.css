@@ -837,4 +837,7 @@ main .openBox .goal-mid-wrapper .notes .note textarea::placeholder {
   .openBox .task-mid-wrapper .wrapper {
     width: 100% !important;
   }
+  .openBox .goal-mid-wrapper {
+    height: 75svh !important;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -544,36 +544,44 @@ addnote.addEventListener('click',(e)=>{
   save();
   render();
 });
-function render(){
+function render(filternotes=notesArray){
 let notedata="";
-notesArray.forEach((e,id)=>{
-notedata+=`<div class="note" id="${id}">
+filternotes.forEach((e)=>{
+notedata+=`<div class="note" data-id="${e.id}">
               <div class="bar">
                  <input type="text"  class="notesname" name="nname" value="${e.title}"  placeholder="Title">
-                 <span class="closenote" data-id="${id}"><i class="ri-close-circle-fill"></i></span>
+                 <span class="closenote" data-id="${e.id}"><i class="ri-close-circle-fill"></i></span>
               </div>
               <textarea name="desc" class="notesdesc" placeholder="Note">${e.note}</textarea>
             </div>`
 })
 notes.innerHTML=notedata; 
 }
+searchbar.addEventListener('input',function(){
+  let searchtxt=this.value.toLowerCase().trim();
+  let searchArray=notesArray.filter((e)=>{
+    return e.title.toLowerCase().includes(searchtxt)||e.note.toLowerCase().includes(searchtxt)
+  });
+  render(searchArray);
+})
 notes.addEventListener('click',(e)=>{
    const closeBtn = e.target.closest('.closenote');
    if(closeBtn){
-    let index=closeBtn.dataset.id;
+    let index=Number(closeBtn.dataset.id);
     let x=confirm("Wanna Remove this note ??");
     if(x){
-       notesArray.splice(index,1);
+       notesArray=notesArray.filter(e=>e.id !== index);
     }
     save();
-    render();
+    searchbar.dispatchEvent(new Event('input'));
    }
 })
 notes.addEventListener("input",(e)=>{
   if(!e.target.matches(".notesname, .notesdesc"))return;
   const noteDiv = e.target.closest(".note");
-  const index = noteDiv.id;
-  const noteObj = notesArray[index];
+  const index = Number(noteDiv.dataset.id);
+  const noteObj =notesArray.find(e=>e.id === index);
+  if (!noteObj) return;
   if (e.target.classList.contains("notesname")) {
     let cleantitle=e.target.value.trim().replace(/\s+/g, ' ');
     noteObj.title = cleantitle;

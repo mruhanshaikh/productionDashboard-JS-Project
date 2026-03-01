@@ -74,5 +74,10 @@ It combines task management, time planning, Kanban workflow, Pomodoro timer, sti
 - Persistent multi-module state handling
 - API integration
 - Production-style project structuring without frameworks
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> cbcface6adc6a2b04661ca1c6c85457657298590
 
